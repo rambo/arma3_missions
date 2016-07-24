@@ -4,13 +4,12 @@ disabledAI=1;
 debriefing=1;
 showGPS=1;
 Respawn = 3;
-RespawnDelay = 1;
+RespawnDelay = 12;
 RespawnDialog = 0;
-enabledebugconsole = true;
+enabledebugconsole = 1;
 loadScreen = "main.jpg";
-author = Wibbler;
-onLoadName = Helicopter Training;
-//onLoadMission = wibble wibble wibble;
+author = Eero af Heurlin;
+onLoadName = Helicopter Training MP;
 
 
 //Parameters
