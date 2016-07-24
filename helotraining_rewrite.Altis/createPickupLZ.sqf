@@ -48,7 +48,7 @@ private _taskid = format["pickup_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],_lzLocation,"AUTOASSIGNED",1,true, "meet", true] call BIS_fnc_taskCreate;
 
 private _handlePickup=false;
-private _trg = createTrigger["EmptyDetector",getPos _lzLoc, true];
+private _trg = createTrigger["EmptyDetector",getPos _lzLocation, true];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];

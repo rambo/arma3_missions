@@ -69,5 +69,5 @@ publicVariable "missionInitComplete";
 
 if (isServer) then
 {
-//    execVM "taskSpawner.sqf";
+    execVM "taskSpawner.sqf";
 };
