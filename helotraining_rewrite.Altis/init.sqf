@@ -14,6 +14,7 @@ deleteSquads = compile preProcessfile "deleteSquads.sqf";
 playerVehicleInList = compile preProcessfile "playerVehicleInList.sqf";
 playerVehicleInListBool = compile preProcessfile "playerVehicleInListBool.sqf";
 getSideTasks = compile preProcessfile "getSideTasks.sqf";
+getSideActiveTasks = compile preProcessfile "getSideActiveTasks.sqf";
 
 
 execVM "briefing.sqf";
