@@ -2,15 +2,16 @@
 _lzCount = 86;
 
 // Compile helpers
-createDropoffLZ = compile preProcessfile "createDropoffLZ.sqf";
-createPickupLZ = compile preProcessfile "createPickupLZ.sqf";
+//createDropoffLZ = compile preProcessfile "createDropoffLZ.sqf";
+//createPickupLZ = compile preProcessfile "createPickupLZ.sqf";
 
-createSquad = compile preProcessfile "createSquad.sqf";
-createEnemySquads = compile preProcessfile "createEnemySquads.sqf";
+//createSquad = compile preProcessfile "createSquad.sqf";
+//createEnemySquads = compile preProcessfile "createEnemySquads.sqf";
 
 deleteSquads = compile preProcessfile "deleteSquads.sqf";
-playerVehicleInList = compile preProcessfile "playerVehicleInList.sqf";
-playerVehicleInListBool = compile preProcessfile "playerVehicleInListBool.sqf";
+//playerVehicleInList = compile preProcessfile "playerVehicleInList.sqf";
+//playerVehicleInListBool = compile preProcessfile "playerVehicleInListBool.sqf";
+//getSideTasks = compile preProcessfile "getSideTasks.sqf";
 
 
 execVM "briefing.sqf";
@@ -66,5 +67,5 @@ publicVariable "missionInitComplete";
 
 if (isServer) then
 {
-    execVM "taskSpawner.sqf";
-}
+//    execVM "taskSpawner.sqf";
+};
