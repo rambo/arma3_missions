@@ -34,6 +34,8 @@ if (_squadCount > 1) then
 landingCompleteArray set [_playerno,  true];
 publicVariable "landingCompleteArray";
 [_taskid] call BIS_fnc_deleteTask;
+taskIdsArray set [_playerno, null];
+publicVariable "taskIdsArray";
 
 
 null = [_vehiclePlayer, (_squadArray select _squadCount -1), _playerno] execVM "loadSquad.sqf";

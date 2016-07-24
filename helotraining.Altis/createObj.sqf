@@ -23,10 +23,10 @@ diag_log format["createObj called, _target: %1, _playerno: %2, _player: %3", _ta
 //(playersArray select _playerno) setCurrentTask _tsk1;
 _taskid = format["p%1_lz%2", _playerno, _lzLoc];
 [west,[_taskid],[format["Fly to and land within %1m of the next LZ", lzSize], "Next LZ", "LZ"],(getPos _lzLoc),true,5,true, "move", true] call BIS_fnc_taskCreate;
+taskIdsArray set [_playerno, _taskid];
 
 
-
-_trg = createTrigger["EmptyDetector",getPos _lzLoc]; 
+_trg = createTrigger["EmptyDetector",getPos _lzLoc];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
