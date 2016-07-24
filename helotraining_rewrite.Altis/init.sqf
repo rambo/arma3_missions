@@ -3,7 +3,7 @@ _lzCount = 86;
 
 // Compile helpers
 createDropoffLZ = compile preProcessfile "createDropoffLZ.sqf";
-//createPickupLZ = compile preProcessfile "createPickupLZ.sqf";
+createPickupLZ = compile preProcessfile "createPickupLZ.sqf";
 
 createSquad = compile preProcessfile "createSquad.sqf";
 createEnemySquads = compile preProcessfile "createEnemySquads.sqf";

@@ -17,7 +17,7 @@ if ((random 1) < AAChance) then
     _lzhot = true;
     _lzAA = true;
 };
-if (_lzhot)
+if (_lzhot) then
 {
     _enemies = _enemies + ([_lzLocation, _lzAA] call createEnemySquads);
 };
