@@ -62,7 +62,7 @@ for [{_iX = 0}, {_iX < _maxplayers}, {_iX = _iX + 1}] do
 	landingCompleteArray set [_iX, false];
 	squadLoadedArray set [_iX, false];
 	playersArray set [_iX, ""];
-	taskIdsArray set [_iX, ""];
+	taskIdsArray set [_iX, false];
 };
 publicVariable "squadMDArray";
 publicVariable "enemyMDArray";

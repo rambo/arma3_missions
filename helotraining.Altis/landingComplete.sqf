@@ -34,7 +34,7 @@ if (_squadCount > 1) then
 landingCompleteArray set [_playerno,  true];
 publicVariable "landingCompleteArray";
 [_taskid] call BIS_fnc_deleteTask;
-taskIdsArray set [_playerno, null];
+taskIdsArray set [_playerno, false];
 publicVariable "taskIdsArray";
 
 

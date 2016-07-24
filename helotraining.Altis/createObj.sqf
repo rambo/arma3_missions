@@ -1,4 +1,5 @@
 //null = [(playersArray select _playerno), [positionA, positionB, positionC...], previousLocation] execVM "createObj.sqf";
+diag_log format["createObj called, _this: %1", _this];
 
 waitUntil {!(isNil "missionInitComplete")};
 
@@ -9,20 +10,14 @@ _prevLZ = _this select 2;
 _playerno = _this select 3;
 _player = playersArray select _playerno;
 
+if (!!(taskIdsArray select _playerno)) exitWith { diag_log format["createObj: Task %1 already exists for %2", (taskIdsArray select _playerno), _playerno] };
+
+
 _lzLoc = (_lzLocs - [_prevLZ]) call BIS_fnc_SelectRandom;
 
-diag_log format["createObj called, _target: %1, _playerno: %2, _player: %3", _target, _playerno, _player];
 
-// TODO: handle the case of player crash/death, reset the task etc
-
-
-
-//_tsk1 = (playersArray select _playerno) createSimpleTask ["NextLZ"];
-//_tsk1 setSimpleTaskDescription [format["Fly to and land within %1m of the next LZ", lzSize], "Next LZ", "LZ"];
-//_tsk1 setSimpleTaskDestination (getPos _lzLoc);
-//(playersArray select _playerno) setCurrentTask _tsk1;
 _taskid = format["p%1_lz%2", _playerno, _lzLoc];
-[west,[_taskid],[format["Player %2: Fly to and land within %1m of the LZ", lzSize, _playerno], format["p%1 LZ", _playerno], "LZ"],(getPos _lzLoc),true,5,true, "move", true] call BIS_fnc_taskCreate;
+[west,[_taskid],[format["Player %2: Fly to and land within %1m of the LZ", lzSize, _playerno], format["p%1 LZ", _playerno], "LZ"],(getPos _lzLoc),"CREATED",1,true, "move", true] call BIS_fnc_taskCreate;
 taskIdsArray set [_playerno, _taskid];
 
 
