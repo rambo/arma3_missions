@@ -5,7 +5,6 @@ waitUntil {!(isNil "missionInitComplete")};
 
 
 _target = _this select 0;
-_lzLocs = _this select 1;
 _prevLZ = _this select 2;
 _playerno = _this select 3;
 _player = playersArray select _playerno;
@@ -13,7 +12,7 @@ _player = playersArray select _playerno;
 if (!!(taskIdsArray select _playerno)) exitWith { diag_log format["createObj: Task %1 already exists for %2", (taskIdsArray select _playerno), _playerno] };
 
 
-_lzLoc = (_lzLocs - [_prevLZ]) call BIS_fnc_SelectRandom;
+_lzLoc = (lzList - [_prevLZ]) call BIS_fnc_SelectRandom;
 
 
 _taskid = format["p%1_lz%2", _playerno, _lzLoc];
@@ -25,7 +24,7 @@ _trg = createTrigger["EmptyDetector",getPos _lzLoc, true];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
-_trgaction = format["null = [thisTrigger, '%2', (playersArray select %1), %3, %4, %1] execVM 'landingComplete.sqf'", _playerno, _taskid, _lzLoc, _lzLocs];
+_trgaction = format["null = [thisTrigger, '%2', (playersArray select %1), %3, %1] execVM 'landingComplete.sqf'", _playerno, _taskid, _lzLoc];
 _trgcond = "[thisList] call lzlanded";
 diag_log format["LZ trigger condition: %1", _trgcond];
 diag_log format["LZ trigger action: %1", _trgaction];

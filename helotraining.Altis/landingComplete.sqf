@@ -4,8 +4,7 @@ _trg = _this select 0;
 _taskid = _this select 1;
 _target = _this select 2;
 _prevLZ = _this select 3;
-_locs = _this select 4;
-_playerno = _this select 5;
+_playerno = _this select 4;
 
 diag_log format["landingComplete called, _this: %1", _this];
 
@@ -45,7 +44,7 @@ _trgLoaded setTriggerArea[lzSize,lzSize,0,false];
 _trgLoaded setTriggerActivation["WEST","PRESENT",false];
 _trgLoaded setTriggerTimeout [3, 3, 3, true];
 _trgcond = format["(squadLoadedArray select %1)", _playerno];
-_trgaction = format["null = [(playersArray select %1), %2, %3, %1] execVM 'createObj.sqf'; hint 'Fly to the next LZ!';", _playerno, _locs, _prevLZ];
+_trgaction = format["null = [(playersArray select %1), %2, %3, %1] execVM 'createObj.sqf'; hint 'Fly to the next LZ!';", _playerno, null, _prevLZ];
 diag_log format["load condition: %1", _trgcond];
 diag_log format["load action: %1", _trgaction];
 _trgLoaded setTriggerStatements[_trgcond, _trgaction, ""]; 

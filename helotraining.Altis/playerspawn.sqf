@@ -6,7 +6,7 @@ playersArray set [_playerno, _target];
 ferryingArray set [_playerno, false];
 landingCompleteArray set [_playerno, false];
 
-null = [(playersArray select _playerno), lzList, [], _playerno] execVM "createObj.sqf";
+null = [(playersArray select _playerno), null, [], _playerno] execVM "createObj.sqf";
 
 (playersArray select _playerno) addItem "SatchelCharge_Remote_Mag";
 (playersArray select _playerno) addweapon "NVGoggles";
