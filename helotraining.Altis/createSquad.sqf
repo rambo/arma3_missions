@@ -2,6 +2,7 @@
 _spawnPos = _this select 0;
 _target = _this select 1;
 _playerno = _this select 2;
+diag_log format["createSquad called, _this: %1", _this];
 
 if (ferryingArray select _playerno) exitWith {};
 

@@ -1,5 +1,6 @@
 _centrePos = _this select 0;
 _playerno = _this select 1;
+diag_log format["enemySquad called, _this: %1", _this];
 
 _centreX = _centrePos select 0;
 _centrePos set [0, _centreX + 100 + (floor random 300)];

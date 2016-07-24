@@ -4,7 +4,7 @@ _target = _this select 0;
 _playerno = _this select 1;
 playersArray set [_playerno, _target];
 
-diag_log format["initPlayer called, _target: %1, _playerno: %2", _target, _playerno];
+diag_log format["initPlayer called, _this: %1", _this];
 
 ferryingArray set [_playerno, false];
 landingCompleteArray set [_playerno, false];

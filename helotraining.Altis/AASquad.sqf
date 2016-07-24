@@ -1,3 +1,4 @@
+diag_log format["AASquad called, _this: %1", _this];
 
 _centrePos = _this select 0;
 _playerno = _this select 1;

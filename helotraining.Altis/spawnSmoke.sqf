@@ -1,6 +1,7 @@
 
 _smokeLoc = _this select 0;
 _playerno = _this select 1;
+diag_log format["spawnSmoke called, _this: %1", _this];
 
 while {!(landingCompleteArray select _playerno)} do
 {
