@@ -1,3 +1,6 @@
+lzLanded = compile preProcessfile "lzlanded.sqf";
+
+
 null = execVM "briefing.sqf";
 _maxplayers = 4;
 _lzCount = 86;
