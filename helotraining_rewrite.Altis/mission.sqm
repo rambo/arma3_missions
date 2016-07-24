@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=132;
+		nextID=134;
 	};
 	class MarkerIDProvider
 	{
@@ -35,13 +35,14 @@ addons[]=
 	"A3_Air_F_EPB_Heli_Light_03",
 	"A3_Modules_F_Multiplayer",
 	"A3_Characters_F",
-	"A3_Modules_F"
+	"A3_Modules_F",
+	"cba_main"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=8;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -90,6 +91,13 @@ class AddonsMetaData
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
+		};
+		class Item7
+		{
+			className="cba_main";
+			name="Community Base Addons - Main Component";
+			author="CBA Team";
+			url="https://www.github.com/CBATeam/CBA_A3";
 		};
 	};
 };
@@ -400,7 +408,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=114;
+		items=115;
 		class Item0
 		{
 			dataType="Marker";
@@ -2372,6 +2380,17 @@ class Mission
 			{
 			};
 			id=116;
+		};
+		class Item114
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14259.498,17.979912,15956.166};
+			};
+			id=133;
+			type="CBA_main_require";
+			atlOffset=-8.7738037e-005;
 		};
 	};
 	class Connections

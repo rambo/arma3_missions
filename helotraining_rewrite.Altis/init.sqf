@@ -1,11 +1,21 @@
-lzLanded = compile preProcessfile "lzlanded.sqf";
-
-
-null = execVM "briefing.sqf";
-
-_maxplayers = 4;
+// Config constant globals
 _lzCount = 86;
-//Handle parameters
+
+// Compile helpers
+createDropoffLZ = compile preProcessfile "createDropoffLZ.sqf";
+createPickupLZ = compile preProcessfile "createPickupLZ.sqf";
+
+createSquad = compile preProcessfile "createSquad.sqf";
+createEnemySquads = compile preProcessfile "createEnemySquads.sqf";
+
+deleteSquads = compile preProcessfile "deleteSquads.sqf";
+playerVehicleInList = compile preProcessfile "playerVehicleInList.sqf";
+playerVehicleInListBool = compile preProcessfile "playerVehicleInListBool.sqf";
+
+
+execVM "briefing.sqf";
+
+//Handle MP parameters
 
 //Time of day
 _time = paramsArray select 0;
@@ -47,6 +57,14 @@ while {_x < _lzCount} do
 
 publicVariable "lzList";
 
+lzCounter = 0;
+publicVariable "lzCounter";
+
+
 missionInitComplete = true;
 publicVariable "missionInitComplete";
 
+if (isServer) then
+{
+    execVM "taskSpawner.sqf";
+}
