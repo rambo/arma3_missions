@@ -24,6 +24,6 @@ _groupEnemy = createGroup east;
 if (_includeAA) then
 {
     "O_soldier_AA_F" createUnit [_position, _groupEnemy,"",0.75, "CORPORAL"];
-}
+};
 
 [_groupEnemy]

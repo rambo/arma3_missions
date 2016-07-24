@@ -5,7 +5,7 @@ private _returnValue = false;
 if (!(([_triggerList] call playerVehicleInList) isEqualTo false)) then
 {
     _returnValue = true;
-}
+};
 
 diag_log format["playerVehicleInListBool returning: %1", _returnValue];
 _returnValue
