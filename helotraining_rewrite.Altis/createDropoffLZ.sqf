@@ -69,7 +69,7 @@ while {true} do
     if (_handleDropoff) then
     {
         private _veh = [list _trg] call playerVehicleInList;
-        private _handle = [_lzLocation, _veh, _squad, _taskid] execVM "ejectSquad.sqf";
+        private _handle = [_lzLocation, _veh, _squad, _taskid] spawn ejectSquad;
         waitUntil {isNull _handle};
         breakOut "mainloop";
     };

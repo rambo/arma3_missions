@@ -72,10 +72,10 @@ while {true} do
     {
         private _newLZLocation = (lzList - [_lzLocation]) call BIS_fnc_SelectRandom;
         private _veh = [list _trg] call playerVehicleInList;
-        private _handle = [_veh, _squad, _taskid] execVM "loadSquad.sqf";
+        private _handle = [_veh, _squad, _taskid] spawn loadSquad;
         waitUntil {isNull _handle};
 
-        private _handle = [_newLZLocation, _veh, _squad, _taskid] execVM "createDropoffLZ.sqf";
+        private _handle = [_newLZLocation, _veh, _squad, _taskid] spawn createDropoffLZ;
         waitUntil {isNull _handle};
         breakOut "mainloop";
     };
