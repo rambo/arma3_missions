@@ -11,7 +11,7 @@ scopeName "main";
         _returnValue = _veh;
         breakTo "main";
     }
-} forEach BIS_fnc_listPlayers;
+} forEach (call BIS_fnc_listPlayers);
 
 diag_log format["playerVehicleInList returning: %1", _returnValue];
 _returnValue
