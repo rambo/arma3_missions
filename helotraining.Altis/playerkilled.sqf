@@ -9,10 +9,10 @@ null = [_taskid, "FAILED", False] spawn BIS_fnc_taskSetState;
 taskIdsArray set [_playerno, false];
 
 // for some reason this either like so or with !! causes compile error
-//if ((trigIdsArray select _playerno)) then
-//{
+if (!((trigIdsArray select _playerno) isEqualTo false)) then
+{
     deleteVehicle (trigIdsArray select _playerno);
-//}
+};
 trigIdsArray set [_playerno, false];
 
 publicVariable "taskIdsArray";

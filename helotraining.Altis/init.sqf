@@ -55,7 +55,7 @@ squadLoadedArray = [];
 playersArray = [];
 taskIdsArray = [];
 trigIdsArray = [];
-
+lzCounter = 1;
 
 for [{_iX = 0}, {_iX < _maxplayers}, {_iX = _iX + 1}] do
 {
@@ -78,6 +78,7 @@ publicVariable "squadLoadedArray";
 publicVariable "playersArray";
 publicVariable "taskIdsArray";
 publicVariable "trigIdsArray";
+publicVariable "lzCounter";
 
 missionInitComplete = true;
 publicVariable "missionInitComplete";

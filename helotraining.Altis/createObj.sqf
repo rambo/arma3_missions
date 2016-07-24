@@ -15,9 +15,54 @@ if (!!(taskIdsArray select _playerno)) exitWith { diag_log format["createObj: Ta
 _lzLoc = (lzList - [_prevLZ]) call BIS_fnc_SelectRandom;
 
 
+
+_handle = [(getPos _lzLoc), (playersArray select _playerno), _playerno] execVM 'createSquad.sqf';
+waitUntil {isNull _handle};
+_squadArray = squadMDArray select _playerno;
+_squad = _squadArray select (count _squadArray - 1);
+
+_lzhot = false;
+//Make the LZ hot if the roll demands it
+if ((random 1) < hotLZChance) then
+{
+	null = [(getPos _lzLoc), _playerno] execVM 'enemySquad.sqf';
+    _lzhot = true;
+};
+_lzAA = false;
+if ((random 1) < AAChance) then
+{
+	null = [(getPos _lzLoc), _playerno] execVM 'AASquad.sqf';
+    _lzAA = true;
+};
+
+landingCompleteArray set [_playerno, false];
+publicVariable "landingCompleteArray";
+
+if (bSmoke) then
+{
+	null = [(getPos _lzLoc), _playerno] execVM 'spawnSmoke.sqf';
+};
+
+_shortestDesc = format["LZ %1", lzCounter];
+_shortdesc = _shortestDesc;
+_longdesc = _shortdesc;
+if (!!(ferryingArray select _playerno)) then
+{
+    diag_log format["creating ferry task for %1 (player %2)", _squad, _playerno];
+    _longdesc = format["%1 wants to fly to this location", _squad];
+    _shortdesc = format["Drop off %1", _squad];
+} else {
+    diag_log format["creating pickup task for %1 (player %2)", _squad, _playerno];
+    _longdesc = format["%1 is requesting airlift from this location", _squad];
+    _shortdesc = format["Pick up %1", _squad];
+};
+
 _taskid = format["p%1_lz%2", _playerno, _lzLoc];
-[[_player, west],[_taskid],[format["Player %2: Fly to and land within %1m of the LZ", lzSize, _playerno], format["p%1 LZ", _playerno], "LZ"],(getPos _lzLoc),"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
+[[_player, west],[_taskid],[_longdesc, _shortdesc, _shortestDesc],(getPos _lzLoc),"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
 taskIdsArray set [_playerno, _taskid];
+
+lzCounter = lzCounter + 1;
+publicVariable "lzCounter";
 
 
 _trg = createTrigger["EmptyDetector",getPos _lzLoc, true];
@@ -30,28 +75,3 @@ diag_log format["LZ trigger condition: %1", _trgcond];
 diag_log format["LZ trigger action: %1", _trgaction];
 _trg setTriggerStatements[_trgcond, _trgaction, ""];
 trigIdsArray set [_playerno, _trg];
-
-
-// TODO: delete the trigger when deleting the task on player death or similar
-
-null = [(getPos _lzLoc), (playersArray select _playerno), _playerno] execVM 'createSquad.sqf';
-
-//Make the LZ hot if the roll demands it
-if ((random 1) < hotLZChance) then
-{
-	null = [(getPos _lzLoc), _playerno] execVM 'enemySquad.sqf';
-	hintSilent "LZ is hot";
-};
-if ((random 1) < AAChance) then
-{
-	null = [(getPos _lzLoc), _playerno] execVM 'AASquad.sqf';
-	hint "LZ has AA!";
-};
-
-landingCompleteArray set [_playerno, false];
-publicVariable "landingCompleteArray";
-
-if (bSmoke) then
-{
-	null = [(getPos _lzLoc), _playerno] execVM 'spawnSmoke.sqf';
-};
