@@ -29,6 +29,8 @@ _trgcond = "[thisList] call lzlanded";
 diag_log format["LZ trigger condition: %1", _trgcond];
 diag_log format["LZ trigger action: %1", _trgaction];
 _trg setTriggerStatements[_trgcond, _trgaction, ""];
+trigIdsArray set [_playerno, _trg];
+
 
 // TODO: delete the trigger when deleting the task on player death or similar
 

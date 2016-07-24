@@ -14,6 +14,9 @@ _vehiclePlayer = vehicle (playersArray select _playerno);
 deletevehicle _trg;
 null = [_taskid, "SUCCEEDED", False] spawn BIS_fnc_taskSetState;
 hint 'Landing successful!';
+// the trigger was deleted when handler was called
+trigIdsArray set [_playerno, false];
+
 
 _squadArray = squadMDArray select _playerno;
 _enemyArray = enemyMDArray select _playerno;

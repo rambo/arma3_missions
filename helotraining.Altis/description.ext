@@ -8,7 +8,7 @@ RespawnDelay = 8;
 RespawnDialog = 0;
 enabledebugconsole = 1;
 loadScreen = "main.jpg";
-author = Eero af Heurlin;
+author = Eero 'rambo' af Heurlin;
 onLoadName = Helicopter Training MP;
 
 

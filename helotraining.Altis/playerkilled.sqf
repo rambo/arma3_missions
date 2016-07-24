@@ -7,7 +7,16 @@ _taskid = taskIdsArray select _playerno;
 null = [_taskid, "FAILED", False] spawn BIS_fnc_taskSetState;
 [_taskid] call BIS_fnc_deleteTask;
 taskIdsArray set [_playerno, false];
+
+// for some reason this either like so or with !! causes compile error
+//if ((trigIdsArray select _playerno)) then
+//{
+    deleteVehicle (trigIdsArray select _playerno);
+//}
+trigIdsArray set [_playerno, false];
+
 publicVariable "taskIdsArray";
+publicVariable "trigIdsArray";
 
 _squadArray = squadMDArray select _playerno;
 _enemyArray = enemyMDArray select _playerno;
