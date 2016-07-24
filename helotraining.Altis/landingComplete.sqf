@@ -40,16 +40,14 @@ taskIdsArray set [_playerno, false];
 publicVariable "taskIdsArray";
 
 
-null = [_vehiclePlayer, (_squadArray select _squadCount -1), _playerno] execVM "loadSquad.sqf";
+_handle = [_vehiclePlayer, (_squadArray select _squadCount -1), _playerno] execVM "loadSquad.sqf";
 
 _trgLoaded = createTrigger["EmptyDetector",getPos _prevLZ]; 
 _trgLoaded setTriggerArea[lzSize,lzSize,0,false];
 _trgLoaded setTriggerActivation["WEST","PRESENT",false];
 _trgLoaded setTriggerTimeout [3, 3, 3, true];
 _trgcond = format["(squadLoadedArray select %1)", _playerno];
-_trgaction = format["null = [(playersArray select %1), %2, %3, %1] execVM 'createObj.sqf'; hint 'Fly to the next LZ!';", _playerno, null, _prevLZ];
+_trgaction = format["null = [(playersArray select %1),null, %2, %1] execVM 'createObj.sqf';", _playerno, _prevLZ];
 diag_log format["load condition: %1", _trgcond];
 diag_log format["load action: %1", _trgaction];
 _trgLoaded setTriggerStatements[_trgcond, _trgaction, ""]; 
-// TODO: should we delete _trgLoaded somewhere ??
-

@@ -96,7 +96,7 @@ class AddonsMetaData
 randomSeed=14406749;
 class ScenarioData
 {
-	author="rambo";
+	author="Eero 'rambo' af Heurlin";
 	respawn=3;
 };
 class CustomAttributes
@@ -380,6 +380,7 @@ class Mission
 {
 	class Intel
 	{
+		briefingName="Helicopter training MP";
 		startWeather=0;
 		startWind=0.099999994;
 		startWaves=0.099999994;

@@ -51,10 +51,26 @@ if (!!(ferryingArray select _playerno)) then
     diag_log format["creating ferry task for %1 (player %2)", _squad, _playerno];
     _longdesc = format["%1 wants to fly to this location", _squad];
     _shortdesc = format["Drop off %1", _squad];
+    if (_lzAA and _lzhot) then
+    {
+        _longdesc = _longdesc + "<br/><strong>Be advised:</strong> Intel reports heavy enemy activity with AA assets at the location";
+    };
+    if (!_lzAA and _lzhot) then
+    {
+        _longdesc = _longdesc + "<br/><strong>Be advised:</strong> Intel reports enemy activity at the location";
+    };
 } else {
     diag_log format["creating pickup task for %1 (player %2)", _squad, _playerno];
     _longdesc = format["%1 is requesting airlift from this location", _squad];
     _shortdesc = format["Pick up %1", _squad];
+    if (_lzAA and _lzhot) then
+    {
+        _longdesc = _longdesc + "<br/><strong>Be advised:</strong> LZ is hot and enemy AA assets have been observed";
+    };
+    if (!_lzAA and _lzhot) then
+    {
+        _longdesc = _longdesc + "<br/><strong>Be advised:</strong> LZ is hot";
+    };
 };
 
 _taskid = format["p%1_lz%2", _playerno, _lzLoc];
