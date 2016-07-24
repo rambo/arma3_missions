@@ -7,8 +7,8 @@ private _fromTaskId = _this select 2;
 {[_x] ordergetin true} foreach units _squad;
 {_x disableAI "TARGET"; _x disableAI "AUTOTARGET";} foreach units _squad;
 
-private wp = _squad addwaypoint [_vehicle,5,1];
-wp setwaypointType "GETIN";
+private _wp = _squad addwaypoint [_vehicle,5,1];
+_wp setwaypointType "GETIN";
 
 scopeName "main";
 while {true} do
@@ -19,7 +19,7 @@ while {true} do
         // Everybody died before boarding :(
         [_fromTaskId, "FAILED" ,true] spawn BIS_fnc_taskSetState;
         breakOut "loadingLoop";
-    }
+    };
     if ({alive _x} count units _squad == {(_x in _vehicle) && (alive _x)} count units _squad) then
     {
         // Boarded
