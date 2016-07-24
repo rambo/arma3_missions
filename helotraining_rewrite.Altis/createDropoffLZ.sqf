@@ -44,30 +44,32 @@ private _assignTo = [_assignToPlayer, west];
 
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["dropoff_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],_lzLocation,"AUTOASSIGNED",1,true, _taskType, true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],_lzLocation,"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
 
-private _handleDropoff=false;
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, true];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
-_trg setTriggerStatements[ format["((%1 in thisList) && (isTouchingGround %1))", _bindToVehicle], "_handleDropoff = true;", ""];
+_trg setTriggerStatements[ format["((%1 in thisList) && (isTouchingGround %1))", _bindToVehicle], "", ""];
 
 // TODO: implement deadline so the task doesn't linger forever
 scopeName "main";
 while {true} do
 {
     scopeName "mainloop";
+    diag_log "createDropoffLZ: ticking";
 
     if ({alive _x} count units _squad == 0) then
     {
+        diag_log format["createDropoffLZ: Everyone from %1 is dead!", _squad];
         // Everybody died before getting there :(
         [_taskid, "FAILED" ,true] spawn BIS_fnc_taskSetState;
         breakOut "mainloop";
     };
 
-    if (_handleDropoff) then
+    if (triggerActivated _trg) then
     {
+        diag_log format["createDropoffLZ: triggered, unloading %1", _squad];
         private _veh = [list _trg] call playerVehicleInList;
         private _handle = [_lzLocation, _veh, _squad, _taskid] spawn ejectSquad;
         waitUntil {isNull _handle};

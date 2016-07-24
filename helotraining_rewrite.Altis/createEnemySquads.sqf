@@ -26,4 +26,6 @@ if (_includeAA) then
     "O_soldier_AA_F" createUnit [_enemyPosition, _groupEnemy,"",0.75, "CORPORAL"];
 };
 
+diag_log format["createEnemySquad %1 positioned to %2", _groupEnemy, _enemyPosition];
+
 [_groupEnemy]

@@ -9,6 +9,7 @@ createSquad = compile preProcessfile "createSquad.sqf";
 createEnemySquads = compile preProcessfile "createEnemySquads.sqf";
 loadSquad = compile preProcessfile "loadSquad.sqf";
 ejectSquad = compile preProcessfile "ejectSquad.sqf";
+spawnSmokeBySquad = compile preProcessfile "spawnSmokeBySquad.sqf";
 
 deleteSquads = compile preProcessfile "deleteSquads.sqf";
 playerVehicleInList = compile preProcessfile "playerVehicleInList.sqf";

@@ -45,14 +45,15 @@ if (!(_assignExtra isEqualTo false)) then
 
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["pickup_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],_lzLocation,"AUTOASSIGNED",1,true, "meet", true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],_lzLocation,"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
+[_squad, _lzLocation, 'green'] spawn spawnSmokeBySquad;
 
-private _handlePickup=false;
+
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, true];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
-_trg setTriggerStatements["([thisList] call playerVehicleInListBool)", "_handlePickup = true;", ""];
+_trg setTriggerStatements["([thisList] call playerVehicleInListBool)", "", ""];
 
 
 // TODO: implement deadline so the task doesn't linger forever
@@ -60,16 +61,19 @@ scopeName "main";
 while {true} do
 {
     scopeName "mainloop";
+    diag_log "createPickupLZ: ticking";
 
     if ({alive _x} count units _squad == 0) then
     {
+        diag_log format["createPickupLZ: Everyone from %1 is dead!", _squad];
         // Everybody died before we got there :(
         [_taskid, "FAILED" ,true] spawn BIS_fnc_taskSetState;
         breakOut "mainloop";
     };
 
-    if (_handlePickup) then
+    if (triggerActivated _trg) then
     {
+        diag_log format["createPickupLZ: triggedred, loading up %1", _squad];
         private _newLZLocation = (lzList - [_lzLocation]) call BIS_fnc_SelectRandom;
         private _veh = [list _trg] call playerVehicleInList;
         private _handle = [_veh, _squad, _taskid] spawn loadSquad;
@@ -79,7 +83,7 @@ while {true} do
         waitUntil {isNull _handle};
         breakOut "mainloop";
     };
-	sleep 1;
+	sleep 2;
 };
 
 deleteVehicle _trg;
