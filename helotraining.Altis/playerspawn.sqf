@@ -1,5 +1,5 @@
 diag_log format["playerspawn called, _this: %1", _this];
-_target = _this select 0;
+_target = (_this select 0) select 0;
 _playerno = _this select 1;
 playersArray set [_playerno, _target];
 

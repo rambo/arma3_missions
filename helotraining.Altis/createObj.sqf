@@ -30,7 +30,7 @@ _trg = createTrigger["EmptyDetector",getPos _lzLoc];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
-_trgcond = format["(vehicle (playersArray select %1) != (playersArray select %1)) && (vehicle ((playersArray select %1)) in thislist) && (isTouchingGround (vehicle (playersArray select %1)))", _playerno];
+_trgcond = "{ _plr = _x; _veh = vehicle _plr; if ((_plr != _veh) && (_veh in thisList) && (isTouchingGround _veh)) then { True } } forEach playableUnits; False;";
 _trgaction = format["null = [thisTrigger, '%2', (playersArray select %1), %3, %4, %1] execVM 'landingComplete.sqf'", _playerno, _taskid, _lzLoc, _lzLocs];
 diag_log format["LZ trigger condition: %1", _trgcond];
 diag_log format["LZ trigger action: %1", _trgaction];

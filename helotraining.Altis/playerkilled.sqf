@@ -1,5 +1,6 @@
 diag_log format["playerkilled called, _this: %1", _this];
 _evt = _this select 0;
+_target = _evt select 0;
 _playerno = _this select 1;
 
 _taskid = taskIdsArray select _playerno;
