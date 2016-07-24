@@ -65,7 +65,7 @@ for [{_iX = 0}, {_iX < _maxplayers}, {_iX = _iX + 1}] do
 	ferryingArray set [_iX, false];
 	landingCompleteArray set [_iX, false];
 	squadLoadedArray set [_iX, false];
-	playersArray set [_iX, ""];
+	playersArray set [_iX, false];
 	taskIdsArray set [_iX, false];
 	trigIdsArray set [_iX, false];
 };

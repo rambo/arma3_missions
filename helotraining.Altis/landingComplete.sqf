@@ -9,6 +9,7 @@ _playerno = _this select 4;
 diag_log format["landingComplete called, _this: %1", _this];
 
 
+
 _vehiclePlayer = vehicle (playersArray select _playerno);
 
 deletevehicle _trg;

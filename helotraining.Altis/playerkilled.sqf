@@ -3,9 +3,14 @@ _evt = _this select 0;
 _target = _evt select 0;
 _playerno = _this select 1;
 
-_taskid = taskIdsArray select _playerno;
-null = [_taskid, "FAILED", False] spawn BIS_fnc_taskSetState;
-[_taskid] call BIS_fnc_deleteTask;
+if (!((taskIdsArray select _playerno) isEqualTo player)) exitWith { diag_log format["playerkilled: %1 != %2", (taskIdsArray select _playerno), player] };
+
+if (!((taskIdsArray select _playerno) isEqualTo false)) then
+{
+    _taskid = taskIdsArray select _playerno;
+    null = [_taskid, "FAILED", False] spawn BIS_fnc_taskSetState;
+    [_taskid] call BIS_fnc_deleteTask;
+};
 taskIdsArray set [_playerno, false];
 
 // for some reason this either like so or with !! causes compile error

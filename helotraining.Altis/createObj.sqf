@@ -9,7 +9,9 @@ _prevLZ = _this select 2;
 _playerno = _this select 3;
 _player = playersArray select _playerno;
 
-if (!!(taskIdsArray select _playerno)) exitWith { diag_log format["createObj: Task %1 already exists for %2", (taskIdsArray select _playerno), _playerno] };
+if ((playersArray select _playerno) isEqualTo false) exitWith { diag_log format["createObj: no such player %1", _playerno] };
+
+if (!((taskIdsArray select _playerno) isEqualTo false)) exitWith { diag_log format["createObj: Task %1 already exists for %2", (taskIdsArray select _playerno), _playerno] };
 
 
 _lzLoc = (lzList - [_prevLZ]) call BIS_fnc_SelectRandom;
@@ -72,6 +74,7 @@ if (!!(ferryingArray select _playerno)) then
         _longdesc = _longdesc + "<br/><strong>Be advised:</strong> LZ is hot";
     };
 };
+_longdesc = _longdesc + format["<br/>Land within %1m", lzSize];
 
 _taskid = format["p%1_lz%2", _playerno, _lzLoc];
 [[_player, west],[_taskid],[_longdesc, _shortdesc, _shortestDesc],(getPos _lzLoc),"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
