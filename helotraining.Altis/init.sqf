@@ -1,12 +1,13 @@
 null = execVM "briefing.sqf";
-
+_maxplayers = 4;
+_lzCount = 86;
 //Handle parameters
 
 //Time of day
 _time = paramsArray select 0;
 if (_time != 1) then
 {
-	skiptime _time;
+	skipTime (_time - daytime + 24 ) % 24;
 }
 else
 {
@@ -31,9 +32,42 @@ _AAParam = paramsArray select 4;
 AAChance = if (_AAParam > 0) then {_AAParam / 100} else {0.0};
 publicVariable "AAChance";
 
-squadArray = [];
-enemyArray = [];
-AAArray = [];
+lzList = [];
+_x = 0;
+while {_x < _lzCount} do
+{
+	_lz = missionNamespace getVariable ("lz" + format["%1", _x + 1]);
+	lzList = lzList + [_lz];
+	_x = _x + 1;
+};
+
+publicVariable "lzList";
+
+squadMDArray = [];
+enemyMDArray = [];
+AAMDArray = [];
+ferryingArray = [];
+landingCompleteArray = [];
+squadLoadedArray = [];
+playersArray = [];
+
+
+for [{_iX = 0}, {_iX < _maxplayers}, {_iX = _iX + 1}] do
+{
+	squadMDArray set [_iX, []];
+	enemyMDArray set [_iX, []];
+	AAMDArray set [_iX, []];
+	ferryingArray set [_iX, false];
+	landingCompleteArray set [_iX, false];
+	squadLoadedArray set [_iX, false];
+	playersArray set [_iX, null];
+};
+publicVariable "squadMDArray";
+publicVariable "enemyMDArray";
+publicVariable "AAMDArray";
+publicVariable "ferryingArray";
+publicVariable "landingCompleteArray";
+publicVariable "squadLoadedArray";
 
 missionInitComplete = true;
 publicVariable "missionInitComplete";

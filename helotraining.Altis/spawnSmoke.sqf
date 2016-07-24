@@ -1,8 +1,8 @@
 
 _smokeLoc = _this select 0;
+_playerno = _this select 1;
 
-
-while {!landingComplete} do
+while {!(landingCompleteArray select _playerno)} do
 {
 	_hour = daytime;
 	if (_hour > 5 && _hour < 19) then

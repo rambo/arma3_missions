@@ -1,7 +1,11 @@
-if (!ferrying) exitWith {};
-
 _group = _this select 0;
 _vehicle = _this select 1;
+_playerno = _this select 2;
+
+diag_log format["ejectSquad called, _this: %1", _this];
+
+if (!(ferryingArray select _playerno)) exitWith {};
+
 
 deleteWaypoint [_group,1];
 
@@ -12,4 +16,5 @@ deleteWaypoint [_group,1];
 wp = _group addwaypoint [lz1,5,1];
 wp setwaypointType "MOVE";
 
-ferrying = false;
+ferryingArray set [_playerno, false];
+publicVariable "ferryingArray";

@@ -1,4 +1,5 @@
 _centrePos = _this select 0;
+_playerno = _this select 1;
 
 _centreX = _centrePos select 0;
 _centrePos set [0, _centreX + 100 + (floor random 300)];
@@ -17,4 +18,5 @@ _groupEnemy = createGroup east;
 "O_soldier_M_F" createUnit [_position, _groupEnemy,"",0.3, "PRIVATE"];
 "O_soldier_AR_F" createUnit [_position, _groupEnemy,"",0.3, "PRIVATE"];
 
-enemyArray = enemyArray + [_groupEnemy];
+enemyMDArray set [_playerno, (enemyMDArray select _playerno) + [_groupEnemy]];
+publicVariable "enemyMDArray";
