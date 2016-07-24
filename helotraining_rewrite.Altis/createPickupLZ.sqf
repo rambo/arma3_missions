@@ -66,7 +66,7 @@ while {true} do
         // Everybody died before we got there :(
         [_taskid, "FAILED" ,true] spawn BIS_fnc_taskSetState;
         breakOut "mainloop";
-    }
+    };
 
     if (_handlePickup) then
     {
