@@ -61,8 +61,8 @@ for [{_iX = 0}, {_iX < _maxplayers}, {_iX = _iX + 1}] do
 	ferryingArray set [_iX, false];
 	landingCompleteArray set [_iX, false];
 	squadLoadedArray set [_iX, false];
-	playersArray set [_iX, null];
-	taskIdsArray set [_iX, null];
+	playersArray set [_iX, ""];
+	taskIdsArray set [_iX, ""];
 };
 publicVariable "squadMDArray";
 publicVariable "enemyMDArray";
@@ -70,6 +70,7 @@ publicVariable "AAMDArray";
 publicVariable "ferryingArray";
 publicVariable "landingCompleteArray";
 publicVariable "squadLoadedArray";
+publicVariable "playersArray";
 publicVariable "taskIdsArray";
 
 missionInitComplete = true;

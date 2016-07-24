@@ -4,7 +4,7 @@ _playerno = _this select 1;
 
 _taskid = taskIdsArray select _playerno;
 null = [_taskid, "FAILED", False] spawn BIS_fnc_taskSetState;
-taskIdsArray set [_playerno, null];
+taskIdsArray set [_playerno, ""];
 publicVariable "taskIdsArray";
 
 _squadArray = squadMDArray select _playerno;

@@ -22,7 +22,7 @@ diag_log format["createObj called, _target: %1, _playerno: %2, _player: %3", _ta
 //_tsk1 setSimpleTaskDestination (getPos _lzLoc);
 //(playersArray select _playerno) setCurrentTask _tsk1;
 _taskid = format["p%1_lz%2", _playerno, _lzLoc];
-[west,[_taskid],[format["Fly to and land within %1m of the next LZ", lzSize], "Next LZ", "LZ"],(getPos _lzLoc),true,5,true, "move", true] call BIS_fnc_taskCreate;
+[west,[_taskid],[format["Player %2: Fly to and land within %1m of the LZ", lzSize, _playerno], format["p%1 LZ", _playerno], "LZ"],(getPos _lzLoc),true,5,true, "move", true] call BIS_fnc_taskCreate;
 taskIdsArray set [_playerno, _taskid];
 
 
