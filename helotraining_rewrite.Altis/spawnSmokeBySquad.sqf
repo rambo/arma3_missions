@@ -4,7 +4,7 @@ private _smokeTgt = _this select 1;
 private _smokeLocation = getPos _smokeTgt;
 private _smokeColor = _this select 2;
 
-private _trg = createTrigger["EmptyDetector", _smokeLocation, true];
+private _trg = createTrigger["EmptyDetector", _smokeLocation, false];
 _trg setTriggerArea[50,50,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 private _keepSpawning = true;

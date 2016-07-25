@@ -46,7 +46,7 @@ private _assignTo = [_assignToPlayer, west];
 private _taskid = format["dropoff_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",1,true, _taskType, true] call BIS_fnc_taskCreate;
 
-private _trg = createTrigger["EmptyDetector",getPos _lzLocation, true];
+private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];

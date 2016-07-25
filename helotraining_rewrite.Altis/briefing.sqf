@@ -10,7 +10,7 @@ switch (side player) do
 	{
 	
 		player createDiaryRecord ["Diary", ["I found a bug?", 
-		"No you didn't. Shhh."]];
+		"Use github: <a href='https://github.com/rambo/arma3_missions'>https://github.com/rambo/arma3_missions</a><br>Based on <a href='http://steamcommunity.com/sharedfiles/filedetails/?id=192094335&searchtext=helicopter+training'>Wibblers work</a>."]];
 		
 		player createDiaryRecord ["Diary", ["Does it end?", 
 		"Nope! The mission will continue on until you feel you've had enough training, at which point you can quit."]];		
@@ -24,8 +24,6 @@ switch (side player) do
 		
 		player createDiaryRecord ["Diary", ["Mission Objectives", 
 		"Select your chopper of choice and fly to the marked LZ. You'll be meeting up with fireteams who've requested EVAC and transporting them to other LZs. Watch out for enemy squads and anti-air troopers."]];
-	
-		
 	};
 	
 	

@@ -52,7 +52,7 @@ if (bSmoke) then
     [_squad, _lzLocation, 'green'] spawn spawnSmokeBySquad;
 };
 
-private _trg = createTrigger["EmptyDetector",getPos _lzLocation, true];
+private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
