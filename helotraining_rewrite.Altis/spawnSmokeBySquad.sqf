@@ -1,4 +1,4 @@
-diag_log format["spawnSmokeBySquad called, _this: %1", _this];
+//diag_log format["spawnSmokeBySquad called, _this: %1", _this];
 private _bindToSquad = _this select 0;
 private _smokeTgt = _this select 1;
 private _smokeLocation = getPos _smokeTgt;
@@ -12,7 +12,7 @@ private _keepSpawning = true;
 // TODO: switch color based on arguments
 while {_keepSpawning} do
 {
-    diag_log format["spawnSmokeBySquad: spawning smoke to %1", _smokeLocation];
+    //diag_log format["spawnSmokeBySquad: spawning smoke to %1", _smokeLocation];
 	_hour = daytime;
 	if (_hour > 5 && _hour < 19) then
 	{
@@ -36,5 +36,5 @@ while {_keepSpawning} do
         };
     } forEach (units _bindToSquad);
 };
-diag_log format["spawnSmokeBySquad done, _this: %1", _this];
+//diag_log format["spawnSmokeBySquad done, _this: %1", _this];
 deleteVehicle _trg;

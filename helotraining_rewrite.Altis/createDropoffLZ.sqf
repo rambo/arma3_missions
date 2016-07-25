@@ -1,4 +1,4 @@
-diag_log format["createDropoffLZ called, _this: %1", _this];
+//diag_log format["createDropoffLZ called, _this: %1", _this];
 private _lzLocation = _this select 0;
 private _bindToVehicle = _this select 1;
 private _bindToSquad = _this select 2;
@@ -45,7 +45,7 @@ private _assignTo = [_assignToPlayer, west];
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["dropoff_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"CREATED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
-_assignToPlayer setCurrentTask _taskid;
+//_assignToPlayer setCurrentTask _taskid;
 
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];
 _trg setTriggerArea[lzSize,lzSize,0,false];
@@ -60,7 +60,7 @@ scopeName "main";
 while {true} do
 {
     scopeName "mainloop";
-    diag_log format["createDropoffLZ: ticking %1", _this];
+    //diag_log format["createDropoffLZ: ticking %1", _this];
 
     if (( _taskid call BIS_fnc_taskCompleted)) then
     {

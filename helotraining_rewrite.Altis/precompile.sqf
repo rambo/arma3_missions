@@ -13,6 +13,8 @@ playerVehicleInList = compile preProcessfile "playerVehicleInList.sqf";
 playerVehicleInListBool = compile preProcessfile "playerVehicleInListBool.sqf";
 getSideTasks = compile preProcessfile "getSideTasks.sqf";
 getSideActiveTasks = compile preProcessfile "getSideActiveTasks.sqf";
+isLanded = compile preProcessfile "isLanded.sqf";
+selectLZ = compile preProcessfile "selectLZ.sqf";
 
 taskSpawner = compile preProcessfile "taskSpawner.sqf";
 xenoRepair = compile preProcessfile "xenoRepair.sqf";

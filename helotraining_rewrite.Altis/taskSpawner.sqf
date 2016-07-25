@@ -8,6 +8,7 @@ while {true} do
     while {count ([west] call getSideActiveTasks) < count _justPlayers} do
     {
         scopename "spawnloop";
+        // TODO: Filter the list so that locations near currently active tasks are not considered
         private _newLZLocation = lzList call BIS_fnc_SelectRandom;
         private _plrAssigned = false;
         {

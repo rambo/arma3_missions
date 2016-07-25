@@ -1,4 +1,4 @@
-diag_log format["createPickupLZ called, _this: %1", _this];
+//diag_log format["createPickupLZ called, _this: %1", _this];
 private _lzLocation = _this select 0;
 private _assignExtra = _this select 1;
 
@@ -12,13 +12,16 @@ if ((random 1) < hotLZChance) then
     _lzhot = true
 };
 private _lzAA = false;
+private _taskType = "move";
 if ((random 1) < AAChance) then
 {
     _lzhot = true;
     _lzAA = true;
 };
+private _taskType = "move";
 if (_lzhot) then
 {
+    _taskType = "defend";
     _enemies = _enemies + ([_lzLocation, _lzAA] call createEnemySquads);
 };
 
@@ -56,7 +59,10 @@ if (!(_assignExtra isEqualTo false)) then
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["pickup_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",(STARTPRIORITY-lzCounter),true, "meet", true] call BIS_fnc_taskCreate;
-(_assignExtra select 0) setCurrentTask _taskid;
+if (!(_assignExtra isEqualTo false)) then
+{
+//    (_assignExtra select 0) setCurrentTask _taskid;
+};
 
 if (bSmoke) then
 {
@@ -75,7 +81,7 @@ scopeName "main";
 while {true} do
 {
     scopeName "mainloop";
-    diag_log format["createPickupLZ: ticking %1", _this];
+    //diag_log format["createPickupLZ: ticking %1", _this];
 
     if (( _taskid call BIS_fnc_taskCompleted)) then
     {
@@ -94,7 +100,9 @@ while {true} do
     if (triggerActivated _trg) then
     {
         diag_log format["createPickupLZ: triggedred, loading up %1", _squad];
+        // TODO: Filter the list so that locations near currently active tasks are not considered
         private _newLZLocation = (lzList - [_lzLocation]) call BIS_fnc_SelectRandom;
+
         private _veh = [list _trg] call playerVehicleInList;
         private _handle = [_veh, _squad, _taskid] spawn loadSquad;
         waitUntil {isNull _handle};

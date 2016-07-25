@@ -1,4 +1,4 @@
-diag_log format["ejectSquad called, _this: %1", _this];
+//diag_log format["ejectSquad called, _this: %1", _this];
 private _lz = _this select 0;
 private _vehicle = _this select 1;
 private _squad = _this select 2;
@@ -22,7 +22,7 @@ scopeName "main";
 while {true} do
 {
     scopeName "ejectloop";
-    diag_log format["ejectSquad: ticking %1", _this];
+//    diag_log format["ejectSquad: ticking %1", _this];
     if (({(_x in _vehicle) && (alive _x)} count units _squad) == 0) then
     {
         // No squad units left alive inside
@@ -34,4 +34,4 @@ while {true} do
 
 [_squadCmdr, format["%1, everyone is out, you're clear to lift off", name _pilot]] remoteExec ['sideChat', _side];
 
-diag_log format["ejectSquad done, _this: %1", _this];
+//diag_log format["ejectSquad done, _this: %1", _this];
