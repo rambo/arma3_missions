@@ -25,16 +25,24 @@ if (_lzhot) then
 lzCounter = lzCounter + 1;
 publicVariable "lzCounter";
 
+private _side = side _squad;
+private _squadCmdr = (units _squad) select 0;
+private _lzLocationName = text ((nearestLocations [getPos _lzLocation, ["NameCityCapital", "NameCity", "NameVillage"], 1500]) select 0);
+[[_side, "HQ"], format["%1 is requesting pickup from near %2", groupId _squad, _lzLocationName]] remoteExec ["sideChat", _side];
+
+
 private _shortestDesc = format["LZ %1", lzCounter];
 private _longdesc = format["%1 wants a pickup from this location", _squad];
 private _shortdesc = format["Pick up %1", _squad];
 if (_lzAA and _lzhot) then
 {
     _longdesc = _longdesc + "<br/><strong>Be advised:</strong> Intel reports heavy enemy activity with AA assets at the location";
+    [_squadCmdr, "Be advised, LZ is very hot with AA assets present"] remoteExec ["sideChat", _side];
 };
 if (!_lzAA and _lzhot) then
 {
     _longdesc = _longdesc + "<br/><strong>Be advised:</strong> Intel reports enemy activity at the location";
+    [_squadCmdr, "Be advised, LZ is hot"] remoteExec ["sideChat", _side];
 };
 
 private _assignTo = [west];
@@ -43,9 +51,12 @@ if (!(_assignExtra isEqualTo false)) then
     _assignTo = _assignTo + _assignExtra;
 };
 
+
+
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["pickup_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",1,true, "meet", true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",(STARTPRIORITY-lzCounter),true, "meet", true] call BIS_fnc_taskCreate;
+(_assignExtra select 0) setCurrentTask _taskid;
 
 if (bSmoke) then
 {

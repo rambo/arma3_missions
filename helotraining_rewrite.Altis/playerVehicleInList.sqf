@@ -2,6 +2,7 @@ diag_log format["playerVehicleInList called, _this: %1", _this];
 private _triggerList = _this select 0;
 private _returnValue = false;
 
+private _justPlayers = (call BIS_fnc_listPlayers) - entities "HeadlessClient_F";
 scopeName "main";
 {
     private _plr = _x;
@@ -11,7 +12,7 @@ scopeName "main";
         _returnValue = _veh;
         breakTo "main";
     }
-} forEach (call BIS_fnc_listPlayers);
+} forEach _justPlayers;
 
-diag_log format["playerVehicleInList returning: %1", _returnValue];
+diag_log format["playerVehicleInList returning: %1 (driver: %2)", _returnValue, driver _returnValue];
 _returnValue

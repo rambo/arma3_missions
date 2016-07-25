@@ -36,9 +36,3 @@ while {_x < LZCOUNT} do
 	lzList = lzList + [_lz];
 	_x = _x + 1;
 };
-
-publicVariable "lzList";
-
-// Keep track of how many LZ we have created, used to give tasks unique names and priorities
-lzCounter = 0;
-publicVariable "lzCounter";

@@ -15,3 +15,5 @@ getSideTasks = compile preProcessfile "getSideTasks.sqf";
 getSideActiveTasks = compile preProcessfile "getSideActiveTasks.sqf";
 
 taskSpawner = compile preProcessfile "taskSpawner.sqf";
+xenoRepair = compile preProcessfile "xenoRepair.sqf";
+vehicleInit = compile preProcessfile "vehicleInit.sqf";

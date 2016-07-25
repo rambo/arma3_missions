@@ -3,6 +3,9 @@ private _lz = _this select 0;
 private _vehicle = _this select 1;
 private _squad = _this select 2;
 private _fromTaskId = _this select 3;
+private _pilot = driver _vehicle;
+private _side = side _squad;
+private _squadCmdr = (units _squad) select 0;
 
 deleteWaypoint [_squad,1];
 
@@ -12,6 +15,8 @@ deleteWaypoint [_squad,1];
 
 private _wp = _squad addwaypoint [_lz,5,1];
 _wp setwaypointType "MOVE";
+
+[_squadCmdr, format["%1, please standby as we're getting off.", name _pilot]] remoteExec ['sideChat', _side];
 
 scopeName "main";
 while {true} do
@@ -26,4 +31,7 @@ while {true} do
     };
     sleep 2;
 };
+
+[_squadCmdr, format["%1, everyone is out, you're clear to lift off", name _pilot]] remoteExec ['sideChat', _side];
+
 diag_log format["ejectSquad done, _this: %1", _this];
