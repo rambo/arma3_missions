@@ -44,7 +44,7 @@ private _assignTo = [_assignToPlayer, west];
 
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["dropoff_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",1,true, _taskType, true] call BIS_fnc_taskCreate;
 
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, true];
 _trg setTriggerArea[lzSize,lzSize,0,false];
