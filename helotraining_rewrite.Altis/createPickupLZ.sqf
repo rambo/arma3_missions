@@ -45,7 +45,7 @@ if (!(_assignExtra isEqualTo false)) then
 
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["pickup_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],_lzLocation,"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
 
 if (bSmoke) then
 {
