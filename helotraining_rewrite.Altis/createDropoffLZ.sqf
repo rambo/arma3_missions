@@ -29,8 +29,8 @@ lzCounter = lzCounter + 1;
 publicVariable "lzCounter";
 
 private _shortestDesc = format["LZ %1", lzCounter];
-private _longdesc = format["%1 wants to fly to this location", _squad];
-private _shortdesc = format["Drop off %1", _squad];
+private _longdesc = format["%1 wants to fly to this location", _bindToSquad];
+private _shortdesc = format["Drop off %1", _bindToSquad];
 if (_lzAA and _lzhot) then
 {
     _longdesc = _longdesc + "<br/><strong>Be advised:</strong> Intel reports heavy enemy activity with AA assets at the location";
@@ -50,18 +50,27 @@ private _trg = createTrigger["EmptyDetector",getPos _lzLocation, true];
 _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
-_trg setTriggerStatements[ format["((%1 in thisList) && (isTouchingGround %1))", _bindToVehicle], "", ""];
+private _trgCond = format["((%1 in thisList) && (isTouchingGround %1))", _bindToVehicle];
+diag_log format["createDropoffLZ: _trgCond %s", _trgCond];
+_trg setTriggerStatements[_trgCond , "", ""];
 
 // TODO: implement deadline so the task doesn't linger forever
 scopeName "main";
 while {true} do
 {
     scopeName "mainloop";
-    diag_log "createDropoffLZ: ticking";
+    diag_log format["createDropoffLZ: ticking %1", _this];
 
-    if ({alive _x} count units _squad == 0) then
+    if (( _taskid call BIS_fnc_taskCompleted)) then
     {
-        diag_log format["createDropoffLZ: Everyone from %1 is dead!", _squad];
+        diag_log format["createPickupLZ: task %1 was marked complete", _taskid];
+        breakOut "mainloop";
+    };
+
+    private _squadAliveCount = {alive _x} count units _bindToSquad;
+    if ((_squadAliveCount < 1)) then
+    {
+        diag_log format["createDropoffLZ: Everyone from %1 is dead!", _bindToSquad];
         // Everybody died before getting there :(
         [_taskid, "FAILED" ,true] spawn BIS_fnc_taskSetState;
         breakOut "mainloop";
@@ -69,9 +78,9 @@ while {true} do
 
     if (triggerActivated _trg) then
     {
-        diag_log format["createDropoffLZ: triggered, unloading %1", _squad];
+        diag_log format["createDropoffLZ: triggered, unloading %1", _bindToSquad];
         private _veh = [list _trg] call playerVehicleInList;
-        private _handle = [_lzLocation, _veh, _squad, _taskid] spawn ejectSquad;
+        private _handle = [_lzLocation, _veh, _bindToSquad, _taskid] spawn ejectSquad;
         waitUntil {isNull _handle};
         breakOut "mainloop";
     };
@@ -80,4 +89,4 @@ while {true} do
 
 deleteVehicle _trg;
 // Make sure there are no lingering enemy or own units
-[_enemies + [_squad]] call deleteSquads;
+[_enemies + [_bindToSquad]] call deleteSquads;

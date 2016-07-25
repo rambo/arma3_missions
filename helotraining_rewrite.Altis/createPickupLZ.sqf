@@ -46,8 +46,11 @@ if (!(_assignExtra isEqualTo false)) then
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["pickup_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],_lzLocation,"AUTOASSIGNED",1,true, "move", true] call BIS_fnc_taskCreate;
-[_squad, _lzLocation, 'green'] spawn spawnSmokeBySquad;
 
+if (bSmoke) then
+{
+    [_squad, _lzLocation, 'green'] spawn spawnSmokeBySquad;
+};
 
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, true];
 _trg setTriggerArea[lzSize,lzSize,0,false];
@@ -61,7 +64,13 @@ scopeName "main";
 while {true} do
 {
     scopeName "mainloop";
-    diag_log "createPickupLZ: ticking";
+    diag_log format["createPickupLZ: ticking %1", _this];
+
+    if (( _taskid call BIS_fnc_taskCompleted)) then
+    {
+        diag_log format["createPickupLZ: task %1 was marked complete", _taskid];
+        breakOut "mainloop";
+    };
 
     if ({alive _x} count units _squad == 0) then
     {

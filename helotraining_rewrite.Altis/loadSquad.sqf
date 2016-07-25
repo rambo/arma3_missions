@@ -14,6 +14,7 @@ scopeName "main";
 while {true} do
 {
     scopeName "loadingLoop";
+    diag_log format["loadSquad: ticking %1", _this];
     if ({alive _x} count units _squad == 0) then
     {
         // Everybody died before boarding :(

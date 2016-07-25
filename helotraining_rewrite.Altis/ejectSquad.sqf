@@ -17,7 +17,8 @@ scopeName "main";
 while {true} do
 {
     scopeName "ejectloop";
-    if (({(_x in _vehicle) && (alive _x)} count units _group) == 0) then
+    diag_log format["ejectSquad: ticking %1", _this];
+    if (({(_x in _vehicle) && (alive _x)} count units _squad) == 0) then
     {
         // No squad units left alive inside
         [_fromTaskId, "SUCCEEDED" ,true] spawn BIS_fnc_taskSetState;
