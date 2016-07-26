@@ -63,7 +63,7 @@ private _taskid = format["pickup_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,_taskState,(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
 if (!(_assignExtra isEqualTo false)) then
 {
-    [_assignExtra,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"ASSIGNED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_setTask;
+    [_taskid,_assignExtra,[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"ASSIGNED"] call BIS_fnc_setTask;
 };
 
 if (bSmoke) then

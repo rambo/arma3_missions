@@ -47,7 +47,7 @@ private _taskid = format["dropoff_%1", lzCounter];
 // Create the task for everyone
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"CREATED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
 // Assign to the player
-[[_assignToPlayer],[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"ASSIGNED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_setTask;
+[_taskid,[_assignToPlayer],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"ASSIGNED"] call BIS_fnc_setTask;
 
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];
 _trg setTriggerArea[lzSize,lzSize,0,false];
