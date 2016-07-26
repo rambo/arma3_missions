@@ -1,13 +1,38 @@
-diag_log format["selectLZ called, _this: %1", _this];
+//diag_log format["selectLZ called, _this: %1", _this];
 private _excludeList = _this select 0;
 private _returnValue = false;
 
-private _candidates = lzList - _excludeList;
-private _tasks = [west] call getSideActiveTasks;
+private _candidates = lzList;
+if (!(_excludeList isEqualTo false)) then
+{
+   _candidates = _candidates - _excludeList;
+};
+private _taskLocations = [];
+{
+    _taskLocations = _taskLocations + [([_x] call BIS_fnc_taskDestination)];
+} forEach ([west] call getSideActiveTasks);
 
 scopeName "main";
-while {true};
+while {true} do
+{
+    scopeName "selectloop";
+    private _usable = true;
+    private _candidate = _candidates call BIS_fnc_SelectRandom;
+    {
+        scopeName "checkloop";
+        private _dist = _candidate distance _x;
+        if (_dist < (4*lzSize)) then
+        {
+            _usable = false;
+            breakOut "checkloop";
+        };
+    } forEach _taskLocations;
+    if (_usable) then
+    {
+        _returnValue = _candidate;
+        breakOut "selectloop";
+    };
+};
 
-
-diag_log format["selectLZ returning: %1", _returnValue];
+//diag_log format["selectLZ returning: %1", _returnValue];
 _returnValue

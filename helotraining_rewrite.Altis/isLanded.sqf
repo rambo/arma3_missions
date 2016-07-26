@@ -1,4 +1,4 @@
-diag_log format["isLanded called, _this: %1", _this];
+//diag_log format["isLanded called, _this: %1", _this];
 private _vehicle = _this select 0;
 private _returnValue = false;
 
@@ -14,7 +14,7 @@ private _isSlow = true;
 if (_isSlow && (_altitude < 1)) then
 {
     _returnValue = true;
-}
+};
 
-diag_log format["isLanded returning: %1", _returnValue];
+//diag_log format["isLanded returning: %1", _returnValue];
 _returnValue

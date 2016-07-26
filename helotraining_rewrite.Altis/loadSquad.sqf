@@ -1,4 +1,4 @@
-diag_log format["loadSquad called, _this: %1", _this];
+//diag_log format["loadSquad called, _this: %1", _this];
 private _vehicle = _this select 0;
 private _squad = _this select 1;
 private _fromTaskId = _this select 2;
@@ -20,7 +20,7 @@ scopeName "main";
 while {true} do
 {
     scopeName "loadingLoop";
-    diag_log format["loadSquad: ticking %1", _this];
+    //diag_log format["loadSquad: ticking %1", _this];
     if ({alive _x} count units _squad == 0) then
     {
         // Everybody died before boarding :(
@@ -38,4 +38,4 @@ while {true} do
 
 [_squadCmdr, format["%1, everyone is onboard, you're clear to lift off", name _pilot]] remoteExec ["sideChat", _side];
 
-diag_log format["loadSquad done, _this: %1", _this];
+//diag_log format["loadSquad done, _this: %1", _this];

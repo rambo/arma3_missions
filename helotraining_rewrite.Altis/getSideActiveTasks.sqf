@@ -1,4 +1,4 @@
-diag_log format["getSideActiveTasks called, _this: %1", _this];
+//diag_log format["getSideActiveTasks called, _this: %1", _this];
 private _side = _this select 0;
 private _returnValue = [];
 
@@ -9,5 +9,5 @@ private _returnValue = [];
     };
 } forEach ([_side] call getSideTasks);
 
-diag_log format["getSideActiveTasks returning: %1", _returnValue];
+//diag_log format["getSideActiveTasks returning: %1", _returnValue];
 _returnValue

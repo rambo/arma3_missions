@@ -40,12 +40,13 @@ if (!_lzAA and _lzhot) then
     _longdesc = _longdesc + "<br/><strong>Be advised:</strong> Intel reports enemy activity at the location";
 };
 
+_longdesc = _longdesc + format["<br/>Created for %1", _assignToPlayer];
 private _assignTo = [_assignToPlayer, west];
 
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["dropoff_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"CREATED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
-//_assignToPlayer setCurrentTask _taskid;
+_assignToPlayer setCurrentTask ([_taskid,_assignToPlayer] call BIS_fnc_taskReal);
 
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];
 _trg setTriggerArea[lzSize,lzSize,0,false];

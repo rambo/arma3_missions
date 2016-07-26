@@ -1,4 +1,4 @@
-diag_log format["createEnemySquad called, _this: %1", _this];
+//diag_log format["createEnemySquad called, _this: %1", _this];
 private _centrePos = _this select 0;
 private _includeAA = _this select 1;
 
@@ -26,6 +26,6 @@ if (_includeAA) then
     "O_soldier_AA_F" createUnit [_enemyPosition, _groupEnemy,"",0.75, "CORPORAL"];
 };
 
-diag_log format["createEnemySquad %1 positioned to %2", _groupEnemy, _enemyPosition];
+//diag_log format["createEnemySquad %1 positioned to %2", _groupEnemy, _enemyPosition];
 
 [_groupEnemy]

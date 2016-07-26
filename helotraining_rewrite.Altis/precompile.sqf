@@ -1,21 +1,21 @@
-// Compile helpers
-createDropoffLZ = compile preProcessfile "createDropoffLZ.sqf";
-createPickupLZ = compile preProcessfile "createPickupLZ.sqf";
+// compileFinal helpers
+createDropoffLZ = compileFinal preProcessfile "createDropoffLZ.sqf";
+createPickupLZ = compileFinal preProcessfile "createPickupLZ.sqf";
 
-createSquad = compile preProcessfile "createSquad.sqf";
-createEnemySquads = compile preProcessfile "createEnemySquads.sqf";
-loadSquad = compile preProcessfile "loadSquad.sqf";
-ejectSquad = compile preProcessfile "ejectSquad.sqf";
-spawnSmokeBySquad = compile preProcessfile "spawnSmokeBySquad.sqf";
+createSquad = compileFinal preProcessfile "createSquad.sqf";
+createEnemySquads = compileFinal preProcessfile "createEnemySquads.sqf";
+loadSquad = compileFinal preProcessfile "loadSquad.sqf";
+ejectSquad = compileFinal preProcessfile "ejectSquad.sqf";
+spawnSmokeBySquad = compileFinal preProcessfile "spawnSmokeBySquad.sqf";
 
-deleteSquads = compile preProcessfile "deleteSquads.sqf";
-playerVehicleInList = compile preProcessfile "playerVehicleInList.sqf";
-playerVehicleInListBool = compile preProcessfile "playerVehicleInListBool.sqf";
-getSideTasks = compile preProcessfile "getSideTasks.sqf";
-getSideActiveTasks = compile preProcessfile "getSideActiveTasks.sqf";
-isLanded = compile preProcessfile "isLanded.sqf";
-selectLZ = compile preProcessfile "selectLZ.sqf";
+deleteSquads = compileFinal preProcessfile "deleteSquads.sqf";
+playerVehicleInList = compileFinal preProcessfile "playerVehicleInList.sqf";
+playerVehicleInListBool = compileFinal preProcessfile "playerVehicleInListBool.sqf";
+getSideTasks = compileFinal preProcessfile "getSideTasks.sqf";
+getSideActiveTasks = compileFinal preProcessfile "getSideActiveTasks.sqf";
+isLanded = compileFinal preProcessfile "isLanded.sqf";
+selectLZ = compileFinal preProcessfile "selectLZ.sqf";
 
-taskSpawner = compile preProcessfile "taskSpawner.sqf";
-xenoRepair = compile preProcessfile "xenoRepair.sqf";
-vehicleInit = compile preProcessfile "vehicleInit.sqf";
+taskSpawner = compileFinal preProcessfile "taskSpawner.sqf";
+xenoRepair = compileFinal preProcessfile "xenoRepair.sqf";
+vehicleInit = compileFinal preProcessfile "vehicleInit.sqf";

@@ -12,13 +12,12 @@ if ((random 1) < hotLZChance) then
     _lzhot = true
 };
 private _lzAA = false;
-private _taskType = "move";
 if ((random 1) < AAChance) then
 {
     _lzhot = true;
     _lzAA = true;
 };
-private _taskType = "move";
+private _taskType = "meet";
 if (_lzhot) then
 {
     _taskType = "defend";
@@ -48,20 +47,25 @@ if (!_lzAA and _lzhot) then
     [_squadCmdr, "Be advised, LZ is hot"] remoteExec ["sideChat", _side];
 };
 
+private _taskState = "AUTOASSIGNED";
 private _assignTo = [west];
 if (!(_assignExtra isEqualTo false)) then
 {
+    _longdesc = _longdesc + format["<br/>Created for %1", _assignExtra];
     _assignTo = _assignTo + _assignExtra;
+    _taskState = "CREATED";
 };
 
 
 
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["pickup_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",(STARTPRIORITY-lzCounter),true, "meet", true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,_taskState,(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
 if (!(_assignExtra isEqualTo false)) then
 {
-//    (_assignExtra select 0) setCurrentTask _taskid;
+    {
+        _x setCurrentTask ([_taskid,_x] call BIS_fnc_taskReal);
+    } forEach _assignExtra;
 };
 
 if (bSmoke) then
@@ -101,7 +105,7 @@ while {true} do
     {
         diag_log format["createPickupLZ: triggedred, loading up %1", _squad];
         // TODO: Filter the list so that locations near currently active tasks are not considered
-        private _newLZLocation = (lzList - [_lzLocation]) call BIS_fnc_SelectRandom;
+        private _newLZLocation = [[_lzLocation]] call selectLZ;
 
         private _veh = [list _trg] call playerVehicleInList;
         private _handle = [_veh, _squad, _taskid] spawn loadSquad;
