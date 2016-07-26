@@ -45,7 +45,8 @@ private _assignTo = [_assignToPlayer, west];
 
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["dropoff_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"CREATED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
+// Doesn't actually assign the task, maybe we need to remoteExec this (though it should still work for me as host and it doesn't...)
 _assignToPlayer setCurrentTask ([_taskid,_assignToPlayer] call BIS_fnc_taskReal);
 
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];

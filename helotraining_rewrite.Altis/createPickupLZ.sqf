@@ -53,7 +53,7 @@ if (!(_assignExtra isEqualTo false)) then
 {
     _longdesc = _longdesc + format["<br/>Created for %1", _assignExtra];
     _assignTo = _assignTo + _assignExtra;
-    _taskState = "CREATED";
+//    _taskState = "CREATED";
 };
 
 
@@ -61,6 +61,7 @@ if (!(_assignExtra isEqualTo false)) then
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["pickup_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,_taskState,(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
+// Doesn't actually assign the task, maybe we need to remoteExec this (though it should still work for me as host and it doesn't...)
 if (!(_assignExtra isEqualTo false)) then
 {
     {
