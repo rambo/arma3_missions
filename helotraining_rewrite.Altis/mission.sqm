@@ -113,7 +113,13 @@ randomSeed=14406749;
 class ScenarioData
 {
 	author="Eero 'rambo' af Heurlin";
+	disabledAI=1;
 	respawn=3;
+	class Header
+	{
+		minPlayers=1;
+		maxPlayers=4;
+	};
 };
 class CustomAttributes
 {
