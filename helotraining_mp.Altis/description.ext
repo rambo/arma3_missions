@@ -29,10 +29,10 @@ class Params
 	class LZSize
 	{
 	//paramsArray[1]
-		title = "LZ Size";
-		values[] = {100,200,300,400,500,600,700,800,900,1000};
-		texts[] = {"100m","200m","300m","400m","500m","600m","700m","800m","900m","1000m"};
-		default = 300;
+		title = "LZ Size (land within X meters of center)";
+		values[] = {15, 25, 50, 100, 150, 200,300,400,500,600,700,800,900,1000};
+		texts[] = {"15m", "25m", "50m", "100m", "150m", "200m","300m","400m","500m","600m","700m","800m","900m","1000m"};
+		default = 100;
 	};
 	
 	class SmokeSetting

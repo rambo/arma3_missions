@@ -8,19 +8,11 @@ scopeName "main";
 while {true} do
 {
     scopeName "mainloop";
-    private _justPlayers = (call BIS_fnc_listPlayers) - entities "HeadlessClient_F";
-    private _alivePlayers = [];
-    {
-        if (alive _x) then
-        {
-            _alivePlayers = _alivePlayers + [_x];
-        };
-    } forEach _justPlayers;
+    private _alivePlayers = [] call getAlivePlayers;
     while {count ([west] call getSideActiveTasks) < count _alivePlayers} do
     {
         scopename "spawnloop";
         diag_log format["taskSpawner: active tasks: %1 players: %2", (count ([west] call getSideActiveTasks)), (count _alivePlayers)];
-        // TODO: Filter the list so that locations near currently active tasks are not considered
         private _newLZLocation = [_lzexclude] call selectLZ;
         private _plrAssigned = false;
         if (_tryAssignPlr) then

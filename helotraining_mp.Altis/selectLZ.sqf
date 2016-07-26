@@ -9,7 +9,7 @@ if (!(_excludeList isEqualTo false)) then
 };
 private _taskLocations = [];
 {
-    _taskLocations = _taskLocations + [([_x] call BIS_fnc_taskDestination)];
+    [_taskLocations, ([_x] call BIS_fnc_taskDestination)] call BIS_fnc_arrayPush;
 } forEach ([west] call getSideActiveTasks);
 
 scopeName "main";

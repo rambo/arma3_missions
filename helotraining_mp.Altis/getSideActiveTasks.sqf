@@ -5,7 +5,7 @@ private _returnValue = [];
 {
     if (!(_x call BIS_fnc_taskCompleted)) then
     {
-        _returnValue = _returnValue + [_x];
+        [_returnValue, _x] call BIS_fnc_arrayPush;
     };
 } forEach ([_side] call getSideTasks);
 

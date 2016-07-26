@@ -15,6 +15,7 @@ getSideTasks = compileFinal preProcessfile "getSideTasks.sqf";
 getSideActiveTasks = compileFinal preProcessfile "getSideActiveTasks.sqf";
 isLanded = compileFinal preProcessfile "isLanded.sqf";
 selectLZ = compileFinal preProcessfile "selectLZ.sqf";
+getAlivePlayers = compileFinal preProcessfile "getAlivePlayers.sqf";
 
 taskSpawner = compileFinal preProcessfile "taskSpawner.sqf";
 xenoRepair = compileFinal preProcessfile "xenoRepair.sqf";
