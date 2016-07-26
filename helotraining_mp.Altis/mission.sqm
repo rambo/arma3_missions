@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=148;
+		nextID=169;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14534.677,467.11179,15490.579};
-		dir[]={-0.18160321,-0.59209311,0.78515315};
-		up[]={-0.13343464,0.80584365,0.57689732};
-		aside[]={0.97428519,1.8044375e-009,0.22534904};
+		pos[]={14312.274,95.927315,15825.014};
+		dir[]={-0.00750871,-0.49898657,0.86659938};
+		up[]={-0.0043233465,0.86658269,0.4990164};
+		aside[]={0.99997741,2.169345e-007,0.0086638052};
 	};
 };
 binarizationWanted=0;
@@ -37,13 +37,17 @@ addons[]=
 	"A3_Modules_F",
 	"cba_main",
 	"A3_Characters_F",
-	"A3_Armor_F_Beta_APC_Wheeled_01"
+	"A3_Armor_F_Beta_APC_Wheeled_01",
+	"A3_Air_F_Heli_Heli_Transport_03",
+	"A3_Air_F_Heli_Heli_Transport_04",
+	"A3_Air_F_Exp_VTOL_02",
+	"A3_Air_F_Exp_VTOL_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=9;
+		items=11;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -104,6 +108,20 @@ class AddonsMetaData
 		{
 			className="A3_Armor_F_Beta";
 			name="Arma 3 Beta - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item9
+		{
+			className="A3_Air_F_Heli";
+			name="Arma 3 Helicopters - Aircrafts";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item10
+		{
+			className="A3_Air_F_Exp";
+			name="Arma 3 Apex - Aircrafts";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -422,7 +440,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=116;
+		items=137;
 		class Item0
 		{
 			dataType="Marker";
@@ -434,7 +452,7 @@ class Mission
 		class Item1
 		{
 			dataType="Marker";
-			position[]={14385.524,17.879999,16071.295};
+			position[]={14396.657,17.879999,16060.253};
 			name="heliRefuel";
 			text="Refuelling station";
 			type="respawn_unknown";
@@ -504,8 +522,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14259.657,21.225758,15987.197};
-				angles[]={6.2805333,2.3147604,0.0013372133};
+				position[]={14254.412,21.235891,15985.165};
+				angles[]={6.2751846,2.3147604,6.2818484};
 			};
 			side="Empty";
 			flags=4;
@@ -517,15 +535,15 @@ class Mission
 			};
 			id=5;
 			type="O_Heli_Attack_02_F";
-			atlOffset=-1.9073486e-006;
+			atlOffset=-7.6293945e-006;
 		};
 		class Item6
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14304.664,21.560114,16030.371};
-				angles[]={0.0013372133,2.3147604,6.2818484};
+				position[]={14307.663,21.556826,16033.271};
+				angles[]={0,2.3147604,0};
 			};
 			side="Empty";
 			flags=4;
@@ -537,15 +555,15 @@ class Mission
 			};
 			id=6;
 			type="I_Heli_Transport_02_F";
-			atlOffset=-1.9073486e-006;
+			atlOffset=1.9073486e-006;
 		};
 		class Item7
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14392.36,19.786005,16077.926};
-				angles[]={0,2.3923833,0};
+				position[]={14405.348,19.794308,16066.273};
+				angles[]={0.0012918708,2.3923833,0};
 			};
 			side="Empty";
 			flags=4;
@@ -562,8 +580,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14312.843,19.839241,15983.184};
-				angles[]={0,5.3724198,6.2818937};
+				position[]={14319.812,19.836655,15977.472};
+				angles[]={0.0013372133,5.3724198,6.2818484};
 			};
 			side="Empty";
 			flags=4;
@@ -575,6 +593,7 @@ class Mission
 			};
 			id=8;
 			type="I_Heli_light_03_unarmed_F";
+			atlOffset=-1.9073486e-006;
 		};
 		class Item9
 		{
@@ -1185,7 +1204,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14260.645,18.003679,15986.058};
+				position[]={14257.973,17.99,15978.663};
 				angles[]={0,2.3994961,0};
 			};
 			name="respawnHeli4";
@@ -1233,7 +1252,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14402.781,17.870001,16086.889};
+				position[]={14414.479,17.870001,16076.889};
 			};
 			id=50;
 			type="ModuleRespawnVehicle_F";
@@ -1437,8 +1456,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14382.955,17.879999,16068.319};
-				angles[]={0,2.3994961,0};
+				position[]={14392.232,17.883947,16054.805};
+				angles[]={0.0013372133,2.3994961,6.2818484};
 			};
 			name="lz33";
 			id=51;
@@ -1594,7 +1613,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14269.255,17.998144,15988.608};
+				position[]={14266.57,17.997906,15986.837};
+				angles[]={0,0,6.2818937};
 			};
 			name="chem1";
 			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
@@ -1642,7 +1662,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14389.304,17.871222,16074.778};
+				position[]={14401.917,17.879999,16064.195};
 			};
 			name="chem5";
 			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
@@ -2508,8 +2528,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14287.232,17.991438,15977.109};
-						angles[]={0,5.3116474,0};
+						position[]={14305.818,17.981016,15994.547};
+						angles[]={0.0013372133,5.3116474,6.2818484};
 					};
 					side="West";
 					flags=4;
@@ -2552,8 +2572,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14326.781,17.959063,16002.155};
-						angles[]={0,5.3116474,6.2818937};
+						position[]={14321.74,17.961437,16002.384};
+						angles[]={0,5.3116474,0};
 					};
 					side="West";
 					flags=4;
@@ -2596,7 +2616,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14276.943,17.991438,15969.649};
+						position[]={14298.47,17.986811,15987.933};
+						angles[]={0,0,6.2818937};
 					};
 					side="West";
 					flags=4;
@@ -2663,16 +2684,322 @@ class Mission
 				nAttributes=1;
 			};
 		};
+		class Item116
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14270.395,19.370241,15927.788};
+				angles[]={0,5.4976721,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="null = [this, player] execVM ""vehicleInit.sqf"";";
+				name="heli7";
+			};
+			id=148;
+			type="B_Heli_Light_01_armed_F";
+		};
+		class Item117
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14240.553,21.362068,15970.207};
+				angles[]={6.2805333,2.339963,6.2765174};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="null = [this, player] execVM ""vehicleInit.sqf"";";
+				name="heli8";
+			};
+			id=149;
+			type="B_Heli_Transport_03_F";
+			atlOffset=0.00019454956;
+		};
+		class Item118
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14297.85,20.727203,16065.04};
+				angles[]={6.2818484,2.3379209,0.0026520467};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="null = [this, player] execVM ""vehicleInit.sqf"";";
+				name="heli9";
+			};
+			id=150;
+			type="O_Heli_Transport_04_F";
+			atlOffset=-4.3869019e-005;
+		};
+		class Item119
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14331.47,21.029564,16062.412};
+				angles[]={0,2.2910938,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="null = [this, player] execVM ""vehicleInit.sqf"";";
+			};
+			id=151;
+			type="O_Heli_Transport_04_bench_F";
+			atlOffset=-1.335144e-005;
+		};
+		class Item120
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14349.701,21.124023,16078.065};
+				angles[]={0.0013372133,2.2608645,6.2818484};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="null = [this, player] execVM ""vehicleInit.sqf"";";
+				name="heli10";
+			};
+			id=152;
+			type="O_T_VTOL_02_infantry_F";
+			atlOffset=4.9591064e-005;
+		};
+		class Item121
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14361.717,24.777973,16013.977};
+				angles[]={0,5.4690766,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="null = [this, player] execVM ""vehicleInit.sqf"";";
+				name="heli11";
+			};
+			id=153;
+			type="B_T_VTOL_01_armed_F";
+		};
+		class Item122
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14303.941,24.826229,15943.687};
+				angles[]={6.2818937,5.49119,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="null = [this, player] execVM ""vehicleInit.sqf"";";
+				name="heli12";
+			};
+			id=154;
+			type="B_T_VTOL_01_infantry_F";
+		};
+		class Item123
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14287.893,17.98564,15949.229};
+				angles[]={6.2818937,0,0};
+			};
+			name="chem6_1";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=155;
+			type="Logic";
+		};
+		class Item124
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14298.599,17.99,15961.558};
+			};
+			name="chem6_2";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=156;
+			type="Logic";
+		};
+		class Item125
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14345.426,17.940001,16014.383};
+			};
+			name="chem6_3";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=157;
+			type="Logic";
+		};
+		class Item126
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14358.303,17.925854,16026.305};
+			};
+			name="chem6_4";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=158;
+			type="Logic";
+			atlOffset=-0.001335144;
+		};
+		class Item127
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14249.051,17.98,15965.696};
+			};
+			name="chem6_5";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=159;
+			type="Logic";
+		};
+		class Item128
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14245.479,17.973972,15959.082};
+				angles[]={0,0,0.0012918708};
+			};
+			name="chem6_6";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=160;
+			type="Logic";
+		};
+		class Item129
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14320.007,17.940001,16041.828};
+			};
+			name="chem6_7";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=161;
+			type="Logic";
+		};
+		class Item130
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14304.444,17.741837,16061.839};
+				angles[]={0.027990974,0,0.012000273};
+			};
+			name="chem6_8";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=162;
+			type="Logic";
+		};
+		class Item131
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14338.715,17.913534,16056.134};
+				angles[]={0.0013372133,0,6.2818484};
+			};
+			name="chem6_9";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=163;
+			type="Logic";
+		};
+		class Item132
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14358.546,17.881561,16078.828};
+				angles[]={0.0012918708,0,0};
+			};
+			name="chem6_10";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=164;
+			type="Logic";
+		};
+		class Item133
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14352.661,17.893118,16070.391};
+				angles[]={0,0,6.2818937};
+			};
+			name="chem6_11";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=165;
+			type="Logic";
+		};
+		class Item134
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14350.433,17.93,16023.922};
+			};
+			name="chem6_12";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=166;
+			type="Logic";
+			atlOffset=-0.00085830688;
+		};
+		class Item135
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14293.498,17.99,15957.896};
+			};
+			name="chem6_13";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=167;
+			type="Logic";
+		};
+		class Item136
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14265.215,17.973728,15932.796};
+				angles[]={6.2818937,0,0};
+			};
+			name="chem6_14";
+			init="_chemlight= ""Chemlight_green"" createVehicle  (getPos this);";
+			id=168;
+			type="Logic";
+		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=9;
+			nextID=16;
 		};
 		class Links
 		{
-			items=9;
+			items=16;
 			class Item0
 			{
 				linkID=0;
@@ -2746,7 +3073,7 @@ class Mission
 			class Item7
 			{
 				linkID=7;
-				item0=135;
+				item0=148;
 				item1=9;
 				class CustomData
 				{
@@ -2756,8 +3083,78 @@ class Mission
 			class Item8
 			{
 				linkID=8;
-				item0=140;
+				item0=149;
 				item1=9;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item9
+			{
+				linkID=9;
+				item0=150;
+				item1=9;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item10
+			{
+				linkID=10;
+				item0=151;
+				item1=9;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item11
+			{
+				linkID=11;
+				item0=152;
+				item1=9;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item12
+			{
+				linkID=12;
+				item0=153;
+				item1=9;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item13
+			{
+				linkID=13;
+				item0=154;
+				item1=9;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item14
+			{
+				linkID=14;
+				item0=140;
+				item1=50;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item15
+			{
+				linkID=15;
+				item0=135;
+				item1=50;
 				class CustomData
 				{
 					type="Sync";
