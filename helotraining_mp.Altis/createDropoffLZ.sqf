@@ -54,7 +54,7 @@ _trg setTriggerArea[lzSize,lzSize,0,false];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
 private _trgCond = format["((%1 in thisList) && ([%1] call isLanded))", _bindToVehicle];
-diag_log format["createDropoffLZ: _trgCond %s", _trgCond];
+//diag_log format["createDropoffLZ: _trgCond %s", _trgCond];
 _trg setTriggerStatements[_trgCond , "", ""];
 
 // TODO: implement deadline so the task doesn't linger forever
