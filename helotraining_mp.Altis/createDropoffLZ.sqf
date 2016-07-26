@@ -43,11 +43,11 @@ if (!_lzAA and _lzhot) then
 _longdesc = _longdesc + format["<br/>Created for %1", _assignToPlayer];
 private _assignTo = [_assignToPlayer, west];
 
-// PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["dropoff_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"AUTOASSIGNED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
-// Doesn't actually assign the task, maybe we need to remoteExec this (though it should still work for me as host and it doesn't...)
-_assignToPlayer setCurrentTask ([_taskid,_assignToPlayer] call BIS_fnc_taskReal);
+// Create the task for everyone
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"CREATED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
+// Assign to the player
+[[_assignToPlayer],[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"ASSIGNED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_setTask;
 
 private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];
 _trg setTriggerArea[lzSize,lzSize,0,false];
