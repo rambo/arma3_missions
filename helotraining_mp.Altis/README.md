@@ -6,5 +6,5 @@ Probably will not run as singplayer scenario at all but that doesn't matter, jus
 
 Also includes code borrowed from [Kylania][kex].
 
-[wbm]: http://steamcommunity.com/sharedfiles/filedetails/?id=192094335&searchtext=helicopter+training
+[wbmp]: http://steamcommunity.com/sharedfiles/filedetails/?id=192094335&searchtext=helicopter+training
 [kex]: http://www.kylania.com/ex/
