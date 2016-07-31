@@ -65,6 +65,9 @@ if (!(_assignExtra isEqualTo false)) then
 {
     [_taskid,_assignExtra,[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"ASSIGNED"] call BIS_fnc_setTask;
 };
+taskIds pushBackUnique _taskid;
+publicVariable "taskIds";
+
 
 if (bSmoke) then
 {

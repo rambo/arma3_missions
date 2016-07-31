@@ -7,7 +7,9 @@ private _returnValue = [];
     {
         [_returnValue, _x] call BIS_fnc_arrayPush;
     };
-} forEach ([_side] call getSideTasks);
+// getSideTasks does not work on dedicated server for whatever reason
+//} forEach ([_side] call getSideTasks);
+} forEach taskIds;
 
 //diag_log format["getSideActiveTasks returning: %1", _returnValue];
 _returnValue
