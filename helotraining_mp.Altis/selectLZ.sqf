@@ -13,6 +13,7 @@ private _taskLocations = [];
 } forEach ([west] call getSideActiveTasks);
 
 scopeName "main";
+private _i = 0;
 while {true} do
 {
     scopeName "selectloop";
@@ -21,7 +22,7 @@ while {true} do
     {
         scopeName "checkloop";
         private _dist = _candidate distance _x;
-        if (_dist < (4*lzSize)) then
+        if (_dist < LZMinDistace) then
         {
             _usable = false;
             breakOut "checkloop";
@@ -32,6 +33,12 @@ while {true} do
         _returnValue = _candidate;
         breakOut "selectloop";
     };
+    _i = _i + 1;
+    if (_i > LZCOUNT) then
+    {
+        _returnValue = false;
+        breakOut "selectloop";
+    }
 };
 
 //diag_log format["selectLZ returning: %1", _returnValue];

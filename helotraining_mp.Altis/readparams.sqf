@@ -35,3 +35,6 @@ while {_x < LZCOUNT} do
 	[lzList, (missionNamespace getVariable (format["lz%1", _x + 1]))] call BIS_fnc_arrayPush;
 	_x = _x + 1;
 };
+
+LZMinDistace = paramsArray select 5;
+publicVariable "LZMinDistace";

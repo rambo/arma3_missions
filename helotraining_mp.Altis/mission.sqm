@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=177;
+		nextID=183;
 	};
 	class MarkerIDProvider
 	{
@@ -2511,7 +2511,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14314.04,17.971205,16001.183};
-						angles[]={0.0013439035,5.3116474,6.2818413};
+						angles[]={0.0013439034,5.3116469,6.2818408};
 					};
 					side="West";
 					flags=6;
@@ -2524,8 +2524,8 @@ class Mission
 						isPlayer=1;
 						isPlayable=1;
 					};
-					id=11;
-					type="B_Pilot_F";
+					id=177;
+					type="B_Helipilot_F";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2572,7 +2572,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Air 1-1";
+							value="Alpha 1-1";
 						};
 					};
 				};
@@ -2910,8 +2910,8 @@ class Mission
 						name="player2";
 						isPlayable=1;
 					};
-					id=170;
-					type="B_Pilot_F";
+					id=178;
+					type="B_Helipilot_F";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2958,7 +2958,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Air 2-1";
+							value="Alpha 2-1";
 						};
 					};
 				};
@@ -2990,8 +2990,8 @@ class Mission
 						name="player3";
 						isPlayable=1;
 					};
-					id=174;
-					type="B_Pilot_F";
+					id=179;
+					type="B_Helipilot_F";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -3038,7 +3038,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Air 3-1";
+							value="Alpha 3-1";
 						};
 					};
 				};
@@ -3070,8 +3070,8 @@ class Mission
 						name="player4";
 						isPlayable=1;
 					};
-					id=176;
-					type="B_Pilot_F";
+					id=180;
+					type="B_Helipilot_F";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -3118,7 +3118,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Air 4-1";
+							value="Alpha 4-1";
 						};
 					};
 				};

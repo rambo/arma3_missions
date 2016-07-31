@@ -105,12 +105,13 @@ while {true} do
     if (triggerActivated _trg) then
     {
         diag_log format["createPickupLZ: triggedred, loading up %1", _squad];
-        // TODO: Filter the list so that locations near currently active tasks are not considered
-        private _newLZLocation = [[_lzLocation]] call selectLZ;
 
         private _veh = [list _trg] call playerVehicleInList;
         private _handle = [_veh, _squad, _taskid] spawn loadSquad;
         waitUntil {isNull _handle};
+
+        // TODO check that the return value is not false (could not choose LZ due to constraints)
+        private _newLZLocation = [[_lzLocation]] call selectLZ;
 
         private _handle = [_newLZLocation, _veh, _squad, _taskid] spawn createDropoffLZ;
         waitUntil {isNull _handle};
