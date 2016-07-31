@@ -38,3 +38,6 @@ while {_x < LZCOUNT} do
 
 LZMinDistace = paramsArray select 5;
 publicVariable "LZMinDistace";
+
+squadsLinger = paramsArray select 6;
+publicVariable "squadsLinger";

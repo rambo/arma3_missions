@@ -70,5 +70,13 @@ class Params
 		texts[] = {"1 km", "1.5 km", "2 km", "5 km", "10 km"};
 		default = 1000;
 	};
-	
+
+	class SquadsLinger
+	{
+	//paramsArray[6]
+		title = "How long squads linger on map after task completetion";
+		values[] = {0, 60, 90, 120, 300, 600};
+		texts[] = {"Not at all", 1 min", "1.5 min", "2 min", "5 min", "10 min"};
+		default = 60;
+	};
 };

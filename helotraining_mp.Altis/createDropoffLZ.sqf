@@ -93,5 +93,7 @@ while {true} do
 };
 
 deleteVehicle _trg;
+
+sleep squadsLinger;
 // Make sure there are no lingering enemy or own units
 [_enemies + [_bindToSquad]] call deleteSquads;
