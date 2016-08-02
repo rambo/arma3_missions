@@ -18,7 +18,10 @@ if (isServer) then
     //Handle MP parameters
     _handle = execVM "readparams.sqf";
     waitUntil {isNull _handle};
-    [EXLUDESPAWNLZS] spawn taskSpawner;
+    if (autoSpawnTasks) then
+    {
+        [EXLUDESPAWNLZS] spawn taskSpawner;
+    }
 };
 
 // Flag init complete

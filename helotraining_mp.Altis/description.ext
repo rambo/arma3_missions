@@ -76,7 +76,16 @@ class Params
 	//paramsArray[6]
 		title = "How long squads linger on map after task completetion";
 		values[] = {0, 60, 90, 120, 300, 600};
-		texts[] = {"Not at all", 1 min", "1.5 min", "2 min", "5 min", "10 min"};
+		texts[] = {"Not at all", "1 min", "1.5 min", "2 min", "5 min", "10 min"};
 		default = 60;
+	};
+
+	class AutoSpawnTasks
+	{
+    //paramsArray[7]
+		title = "Automatically create tasks for all players";
+		values[] = {0,1};
+		texts[] = {"Off", "On"};
+		default = 1;
 	};
 };
