@@ -18,6 +18,9 @@ selectLZ = compileFinal preProcessfile "selectLZ.sqf";
 getAlivePlayers = compileFinal preProcessfile "getAlivePlayers.sqf";
 spawnCrewAction = compileFinal preProcessfile "spawnCrewAction.sqf";
 spawnPlayerTask = compileFinal preProcessfile "spawnPlayerTask.sqf";
+destroyVehicleAction = compileFinal preProcessfile "destroyVehicleAction.sqf";
+destroyMainrotorAction = compileFinal preProcessfile "destroyMainrotorAction.sqf";
+destroyTailrotorAction = compileFinal preProcessfile "destroyTailrotorAction.sqf";
 
 taskSpawner = compileFinal preProcessfile "taskSpawner.sqf";
 xenoRepair = compileFinal preProcessfile "xenoRepair.sqf";
