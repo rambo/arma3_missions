@@ -30,7 +30,7 @@ publicVariable "lzCounter";
 private _side = side _squad;
 private _squadCmdr = (units _squad) select 0;
 private _lzLocationName = text ((nearestLocations [getPos _lzLocation, ["NameCityCapital", "NameCity", "NameVillage"], 1500]) select 0);
-[[_side, "HQ"], format["%1 is requesting pickup from near %2", groupId _squad, _lzLocationName]] remoteExec ["sideChat", _side];
+[[_side, "HQ"], format["%1 is requesting pickup for %2 from near %3", groupId _squad, count units _squad, _lzLocationName]] remoteExec ["sideChat", _side];
 
 
 private _shortestDesc = format["LZ %1", lzCounter];
