@@ -1,45 +1,16 @@
-//diag_log format["selectLZ called, _this: %1", _this];
-private _excludeList = _this select 0;
-private _returnValue = false;
+params [["_excludeList", []]];
 
 private _candidates = lzList;
-if (!(_excludeList isEqualTo false)) then
-{
-   _candidates = _candidates - _excludeList;
-};
-private _taskLocations = [];
-{
-    [_taskLocations, ([_x] call BIS_fnc_taskDestination)] call BIS_fnc_arrayPush;
-} forEach ([west] call getSideActiveTasks);
 
-scopeName "main";
-private _i = 0;
-while {true} do
-{
-    scopeName "selectloop";
-    private _usable = true;
-    private _candidate = _candidates call BIS_fnc_SelectRandom;
-    {
-        scopeName "checkloop";
-        private _dist = _candidate distance _x;
-        if (_dist < LZMinDistace) then
-        {
-            _usable = false;
-            breakOut "checkloop";
-        };
-    } forEach _taskLocations;
-    if (_usable) then
-    {
-        _returnValue = _candidate;
-        breakOut "selectloop";
-    };
-    _i = _i + 1;
-    if (_i > LZCOUNT) then
-    {
-        _returnValue = false;
-        breakOut "selectloop";
-    }
+if (_excludeList isEqualType []) then 
+{ 
+	_candidates = _candidates - _excludeList;
 };
 
-//diag_log format["selectLZ returning: %1", _returnValue];
-_returnValue
+private _taskLocations = [west] call getSideActiveTasks apply { [_x] call BIS_fnc_taskDestination };
+
+for "_i" from 0 to LZCOUNT do {
+    private _candidate = selectRandom _candidates;
+    if (_taskLocations findIf { _x distance _candidate < LZMinDistace } == -1 && { allPlayers findIf { _x distance _candidate > LZMaxDistace } == -1 }) exitWith { _candidate };
+    false
+}

@@ -25,7 +25,7 @@ class Params
 			texts[] = {"Dawn","Midday","Dusk", "Midnight", "Random"};
 			default = 12;
 	};
-	
+
 	class LZSize
 	{
 	//paramsArray[1]
@@ -34,7 +34,7 @@ class Params
 		texts[] = {"15m", "25m", "50m", "100m", "150m", "200m","300m"};
 		default = 100;
 	};
-	
+
 	class SmokeSetting
 	{
 	//paramsArray[2]
@@ -52,7 +52,7 @@ class Params
 		texts[] = {"Never", "Low", "Medium", "High", "Always"};
 		default = 50;
 	};
-	
+
 	class AAProbability
 	{
 	//paramsArray[4]
@@ -88,4 +88,14 @@ class Params
 		texts[] = {"Off", "On"};
 		default = 1;
 	};
+
+	class LZMaxDistace
+	{
+	//paramsArray[8]
+		title = "LZ max distance from other active missions (setting this too low might cause bugs)";
+		values[] = {1000000000,2000,5000,10000,20000,30000,40000};
+		texts[] = {"no limit", "2 km", "5 km", "10 km", "20 km", "30 km", "40 km"};
+		default = 1000000000;
+	};
+
 };

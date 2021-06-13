@@ -44,3 +44,6 @@ publicVariable "squadsLinger";
 
 autoSpawnTasks = if ((paramsArray select 7) == 1) then {true} else {false};
 publicVariable "autoSpawnTasks";
+
+LZMaxDistace = paramsArray select 8;
+publicVariable "LZMaxDistace";
