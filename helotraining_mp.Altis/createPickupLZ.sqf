@@ -1,21 +1,23 @@
 //diag_log format["createPickupLZ called, _this: %1", _this];
 private _lzLocation = _this select 0;
 private _assignExtra = _this select 1;
-
 private _squad = [_lzLocation] call createSquad;
 
 private _enemies = [];
 private _lzhot = false;
+private _lzAA = false;
+
 //Make the LZ hot if the roll demands it
 if ((random 1) < hotLZChance) then
 {
     _lzhot = true
 };
-private _lzAA = false;
-if ((random 1) < AAChance) then
+if (_lzhot) then
 {
-    _lzhot = true;
-    _lzAA = true;
+	if ((random 1) < AAChance) then
+	{
+    	_lzAA = true;
+	};
 };
 private _taskType = "meet";
 if (_lzhot) then
@@ -29,8 +31,8 @@ publicVariable "lzCounter";
 
 private _side = side _squad;
 private _squadCmdr = (units _squad) select 0;
-private _lzLocationName = text ((nearestLocations [getPos _lzLocation, ["NameCityCapital", "NameCity", "NameVillage"], 1500]) select 0);
-[[_side, "HQ"], format["%1 is requesting pickup for %2 from near %3", groupId _squad, count units _squad, _lzLocationName]] remoteExec ["sideChat", _side];
+private _lzLocationName = text ((nearestLocations [getPosATL _lzLocation, ["NameCityCapital", "NameCity", "NameVillage"], 1500]) select 0);
+[[_side, "HQ"], format["%1 is requesting pickup for %2 operators near %3", groupId _squad, count units _squad, _lzLocationName]] remoteExec ["sideChat", _side];
 
 
 private _shortestDesc = format["LZ %1", lzCounter];
@@ -60,10 +62,10 @@ if (!(_assignExtra isEqualTo false)) then
 
 // PONDER: make a parent task "ferry squad X" ??
 private _taskid = format["pickup_%1", lzCounter];
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,_taskState,(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPosATL _lzLocation,_taskState,(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
 if (!(_assignExtra isEqualTo false)) then
 {
-    [_taskid,_assignExtra,[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"ASSIGNED"] call BIS_fnc_setTask;
+    [_taskid,_assignExtra,[_longdesc, _shortdesc, _shortestDesc],getPosATL _lzLocation,"ASSIGNED"] call BIS_fnc_setTask;
 };
 taskIds pushBackUnique _taskid;
 publicVariable "taskIds";
@@ -74,8 +76,8 @@ if (bSmoke) then
     [_squad, _lzLocation, 'green'] spawn spawnSmokeBySquad;
 };
 
-private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];
-_trg setTriggerArea[lzSize,lzSize,0,false];
+private _trg = createTrigger["EmptyDetector",getPosATL _lzLocation, false];
+_trg setTriggerArea[lzSize,lzSize,0,false,50];
 _trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerTimeout [2.5, 2.5, 2.5, true];
 _trg setTriggerStatements["([thisList] call playerVehicleInListBool)", "", ""];
@@ -104,7 +106,7 @@ while {true} do
 
     if (triggerActivated _trg) then
     {
-        diag_log format["createPickupLZ: triggedred, loading up %1", _squad];
+        diag_log format["createPickupLZ: triggered, loading up %1", _squad];
 
         private _veh = [list _trg] call playerVehicleInList;
         private _handle = [_veh, _squad, _taskid] spawn loadSquad;

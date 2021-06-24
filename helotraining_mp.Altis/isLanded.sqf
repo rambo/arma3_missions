@@ -2,16 +2,16 @@
 private _vehicle = _this select 0;
 private _returnValue = false;
 
-private _altitude =  (getPosATL _vehicle) select 2;
+private _altitude =  (getPos _vehicle) select 2;
 private _isSlow = true;
 {
-    if (_x > 0.5) then
+    if (_x > 4) then
     {
         _isSlow = false;
     }
 } forEach (velocity _vehicle);
 
-if (_isSlow && (_altitude < 1)) then
+if (_isSlow && (_altitude < 4)) then
 {
     _returnValue = true;
 };

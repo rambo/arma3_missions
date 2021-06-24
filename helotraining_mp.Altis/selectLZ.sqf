@@ -11,6 +11,6 @@ private _taskLocations = [west] call getSideActiveTasks apply { [_x] call BIS_fn
 
 for "_i" from 0 to LZCOUNT do {
     private _candidate = selectRandom _candidates;
-    if (_taskLocations findIf { _x distance _candidate < LZMinDistace } == -1 && { allPlayers findIf { _x distance _candidate > LZMaxDistace } == -1 }) exitWith { _candidate };
+    if (_taskLocations findIf { _x distance _candidate < LZMinDistace } == -1 && { allPlayers findIf { _x distance _candidate > LZMaxDistace } == -1 } && { allPlayers findIf { _x distance _candidate < 200 } == -1 }) exitWith { _candidate };
     false
 }

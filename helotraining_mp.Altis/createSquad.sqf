@@ -1,19 +1,25 @@
 //diag_log format["createSquad called, _this: %1", _this];
 private _spawnPos = _this select 0;
+private _sog13 = "";
+private _sog16 = "";
+private _sog05 = "";
+
+posMan = createVehicle ["B_Soldier_F",_lzLocation];
+
+KK_fnc_setPosAGLS = {
+	params ["_obj", "_pos", "_offset"];
+	_offset = _pos select 2;
+	if (isNil "_offset") then {_offset = 0};
+	_pos set [2, worldSize]; 
+	_obj setPosASL _pos;
+	_pos set [2, vectorMagnitude (_pos vectorDiff getPosVisual _obj) + _offset];
+	_obj setPosASL _pos;
+};
+
+[posMan, [getPos posMan select 0,getPos posMan select 1,0]] call KK_fnc_setPosAGLS;
+
 
 private _groupTaxi = createGroup west;
-if (vehicle player == player) then
-{
-    // Player is not in vehicle, create default fireteam
-    // TODO: use some preconfigured fireteam setup
-    "B_Soldier_F" createUnit [_spawnPos, _groupTaxi,"",0.6, "CORPORAL"];
-    "B_soldier_AR_F" createUnit [_spawnPos, _groupTaxi,"",0.3, "PRIVATE"];
-    "B_Soldier_F" createUnit [_spawnPos, _groupTaxi,"",0.5, "PRIVATE"];
-    "B_Soldier_F" createUnit [_spawnPos, _groupTaxi,"",0.5, "PRIVATE"];
-    "B_Soldier_F" createUnit [_spawnPos, _groupTaxi,"",0.5, "PRIVATE"];
-}
-else
-{
     // Player is in vehicle, spawn as many passengers as it can hold
     _veh = typeOf (vehicle player);
     _totalSeats = [_veh, true] call BIS_fnc_crewCount;
@@ -24,20 +30,29 @@ else
     {
         _cargoSeats = 8;
     };
+		_sog13 = _groupTaxi createUnit ["B_Soldier_F", [0, 0, 0], [], 0, "NONE"];
+		_sog13 setPosASL getPosASL posMan;
+		_sog13 setUnitRank "COLONEL";
+		_sog13 setSkill 0.8;
 
-    "B_Soldier_F" createUnit [_spawnPos, _groupTaxi,"",0.6, "CORPORAL"];
+deleteVehicle posMan;
 
     // if we have space after the corporal spawn the autorifleman
     if (_cargoSeats > 1) then
     {
-        "B_soldier_AR_F" createUnit [_spawnPos, _groupTaxi,"",0.3, "PRIVATE"];
+		_sog16 = _groupTaxi createUnit ["B_soldier_AR_F", [0, 0, 0], [], 0, "NONE"]; 
+		_sog16 setPosASL (getPosASL _sog13 vectorAdd [random[1,2,3],random[1,2,3],0]);
+		_sog16 setUnitRank "PRIVATE";
+		_sog16 setSkill 0.5;
     };
 
     // For rest of the spots spawn basic units
     for "_i" from 1 to (_cargoSeats - 2) do
     {
-        "B_Soldier_F" createUnit [_spawnPos, _groupTaxi,"",0.5, "PRIVATE"];
+        	_sog05 = _groupTaxi createUnit ["B_Soldier_F", [0, 0, 0], [], 0, "NONE"];
+		_sog05 setPosASL (getPosASL _sog16 vectorAdd [random[1,2,3],random[1,2,3],0]);
+		_sog05 setUnitRank "PRIVATE";
+		_sog05 setSkill 0.6;
     };
-};
 
 _groupTaxi

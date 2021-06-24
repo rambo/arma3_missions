@@ -1,8 +1,9 @@
 //diag_log format["spawnSmokeBySquad called, _this: %1", _this];
 private _bindToSquad = _this select 0;
 private _smokeTgt = _this select 1;
-private _smokeLocation = getPos _smokeTgt;
+private _smokeLocation = getPosASL leader _bindToSquad;
 private _smokeColor = _this select 2;
+
 
 private _trg = createTrigger["EmptyDetector", _smokeLocation, false];
 _trg setTriggerArea[50,50,0,false];
