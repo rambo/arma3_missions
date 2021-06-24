@@ -1,4 +1,6 @@
 // compileFinal helpers
+onPlayerRespawn = compileFinal preProcessfile "onPlayerRespawn.sqf";
+
 createDropoffLZ = compileFinal preProcessfile "createDropoffLZ.sqf";
 createPickupLZ = compileFinal preProcessfile "createPickupLZ.sqf";
 
@@ -21,6 +23,7 @@ spawnPlayerTask = compileFinal preProcessfile "spawnPlayerTask.sqf";
 destroyVehicleAction = compileFinal preProcessfile "destroyVehicleAction.sqf";
 destroyMainrotorAction = compileFinal preProcessfile "destroyMainrotorAction.sqf";
 destroyTailrotorAction = compileFinal preProcessfile "destroyTailrotorAction.sqf";
+deleteCrewAction = compileFinal preProcessfile "deleteCrewAction.sqf";
 
 taskSpawner = compileFinal preProcessfile "taskSpawner.sqf";
 xenoRepair = compileFinal preProcessfile "xenoRepair.sqf";
