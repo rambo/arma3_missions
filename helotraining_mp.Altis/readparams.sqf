@@ -1,4 +1,3 @@
-
 //Time of day
 _time = paramsArray select 0;
 if (_time != 1) then
@@ -39,11 +38,14 @@ while {_x < LZCOUNT} do
 LZMinDistace = paramsArray select 5;
 publicVariable "LZMinDistace";
 
-squadsLinger = paramsArray select 6;
+LZMaxDistace = paramsArray select 6;
+publicVariable "LZMaxDistace";
+
+squadsLinger = paramsArray select 7;
 publicVariable "squadsLinger";
 
-autoSpawnTasks = if ((paramsArray select 7) == 1) then {true} else {false};
+autoSpawnTasks = if ((paramsArray select 8) == 1) then {true} else {false};
 publicVariable "autoSpawnTasks";
 
-LZMaxDistace = paramsArray select 8;
-publicVariable "LZMaxDistace";
+enemyDistace = paramsArray select 9;
+publicVariable "enemyDistace";
