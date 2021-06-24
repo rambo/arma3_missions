@@ -1,14 +1,8 @@
 //diag_log format["spawnCrewAction called, _this: %1", _this];
-private _vehicle = _this select 0;
-private _caller = _this select 1;
-private _returnValue = [];
-private _group = group _caller;
-private _tmpGroup = createGroup civilian;
-_returnValue = [ _vehicle, _tmpGroup, false, typeof _vehicle]; createVehicleCrew _vehicle; _vehicle deleteVehicleCrew driver _vehicle;
-// a bit of twiddling to get the units to the correct side
-_returnValue joinSilent grpNull;
-_returnValue joinSilent _group;
-deleteGroup _tmpGroup;
-
-//diag_log format["spawnCrewAction returning: %1", _returnValue];
-_returnValue
+params ["_vehicle", "_caller"];
+_group = group _caller;
+_newGroup = createVehicleCrew _vehicle; 
+_vehicle deleteVehicleCrew driver _vehicle;
+units _newGroup joinSilent _group;
+{_x setSkill 1} forEach units _group;
+deleteGroup _newGroup;

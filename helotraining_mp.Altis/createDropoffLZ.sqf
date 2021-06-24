@@ -7,16 +7,20 @@ private _assignToPlayer = driver _bindToVehicle;
 
 private _enemies = [];
 private _lzhot = false;
+private _lzAA = false;
+
 //Make the LZ hot if the roll demands it
 if ((random 1) < hotLZChance) then
 {
     _lzhot = true
 };
-private _lzAA = false;
-if ((random 1) < AAChance) then
+
+if (_lzhot) then
 {
-    _lzhot = true;
-    _lzAA = true;
+	if ((random 1) < AAChance) then
+	{
+    	_lzAA = true;
+	};
 };
 private _taskType = "move";
 if (_lzhot) then
@@ -45,16 +49,16 @@ private _assignTo = [_assignToPlayer, west];
 
 private _taskid = format["dropoff_%1", lzCounter];
 // Create the task for everyone
-[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"CREATED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
+[_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPosATL _lzLocation,"CREATED",(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
 // Assign to the player
-[_taskid,[_assignToPlayer],[_longdesc, _shortdesc, _shortestDesc],getPos _lzLocation,"ASSIGNED"] call BIS_fnc_setTask;
+[_taskid,[_assignToPlayer],[_longdesc, _shortdesc, _shortestDesc],getPosATL _lzLocation,"ASSIGNED"] call BIS_fnc_setTask;
 taskIds pushBackUnique _taskid;
 publicVariable "taskIds";
 
-private _trg = createTrigger["EmptyDetector",getPos _lzLocation, false];
-_trg setTriggerArea[lzSize,lzSize,0,false];
+private _trg = createTrigger["EmptyDetector",getPosATL _lzLocation, false];
+_trg setTriggerArea[lzSize,lzSize,0,false,50];
 _trg setTriggerActivation["WEST","PRESENT",false];
-_trg setTriggerTimeout [2.5, 2.5, 2.5, true];
+_trg setTriggerTimeout [2.0, 2.0, 2.0, true];
 private _trgCond = format["((%1 in thisList) && ([%1] call isLanded))", _bindToVehicle];
 //diag_log format["createDropoffLZ: _trgCond %s", _trgCond];
 _trg setTriggerStatements[_trgCond , "", ""];

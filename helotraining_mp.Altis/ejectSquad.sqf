@@ -9,7 +9,7 @@ private _squadCmdr = (units _squad) select 0;
 
 deleteWaypoint [_squad,1];
 
-{_x action["eject", vehicle _x]} forEach units _squad;
+{moveOut _x; sleep 0.4} forEach units _squad;
 {unAssignVehicle _x} forEach units _squad;
 {_x enableAI "TARGET"; _x enableAI "AUTOTARGET";} foreach units _squad;
 
