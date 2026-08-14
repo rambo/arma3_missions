@@ -53,7 +53,7 @@ private _taskState = "AUTOASSIGNED";
 private _assignTo = [west];
 if (!(_assignExtra isEqualTo false)) then
 {
-    _longdesc = _longdesc + format["<br/>Created for %1", _assignExtra];
+    _longdesc = _longdesc + format["<br/>Created for %1", name (_assignExtra select 0)];
     _assignTo = _assignTo + _assignExtra;
     _taskState = "CREATED";
 };
