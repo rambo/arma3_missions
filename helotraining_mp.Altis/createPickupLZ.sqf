@@ -65,7 +65,7 @@ private _taskid = format["pickup_%1", lzCounter];
 [_assignTo,[_taskid],[_longdesc, _shortdesc, _shortestDesc],getPosATL _lzLocation,_taskState,(STARTPRIORITY-lzCounter),true, _taskType, true] call BIS_fnc_taskCreate;
 if (!(_assignExtra isEqualTo false)) then
 {
-    [_taskid,_assignExtra,[_longdesc, _shortdesc, _shortestDesc],getPosATL _lzLocation,"ASSIGNED",nil,true,false] call BIS_fnc_setTask;
+    [_taskid,_assignExtra,[_longdesc, _shortdesc, _shortestDesc],getPosATL _lzLocation,"ASSIGNED",nil,true,false] remoteExec ["BIS_fnc_setTask", _assignExtra];
 };
 taskIds pushBackUnique _taskid;
 publicVariable "taskIds";
